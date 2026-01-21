@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vision of Premium Support</title>
+    <title>Premium Support Presentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/imjac0b/CursorGothic@main/cursor-gothic.css" rel="stylesheet">
     <style>
         :root {
-            /* Cursor AI Color Palette */
-            --purple: #7C3AED;
-            --orange: #D97706;
-            --teal: #0D9488;
+            /* Cursor AI Color Palette - Code Editor */
+            --purple: #8B5CF6;
+            --orange: #F97316;
+            --teal: #14B8A6;
+            --red: #F87171;
             --gray: #6B7280;
             --dark-gray: #374151;
             --background: #FAF9F7;
@@ -35,6 +37,68 @@
             padding: 2rem;
         }
 
+        .presentation-container {
+            display: flex;
+            gap: 2rem;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .chapter-nav {
+            width: 220px;
+            flex-shrink: 0;
+            padding-top: 1rem;
+        }
+
+        .chapter-nav h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding-left: 0.75rem;
+        }
+
+        .chapter-nav ul {
+            list-style: none;
+        }
+
+        .chapter-nav li {
+            margin-bottom: 0.25rem;
+        }
+
+        .chapter-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--gray);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-nav a:hover {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        .chapter-nav a.active {
+            background-color: var(--teal);
+            color: white;
+            font-weight: 500;
+        }
+
+        .chapter-nav .chapter-icon {
+            margin-right: 0.5rem;
+        }
+
+        .slides-container {
+            flex: 1;
+        }
+
         .slide {
             width: 100%;
             max-width: 1200px;
@@ -42,7 +106,7 @@
             background: var(--white);
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -50,24 +114,119 @@
             position: relative;
         }
 
+        .slide.active {
+            display: flex;
+        }
+
         .slide-number {
             position: absolute;
             top: 1.5rem;
             right: 2rem;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 0.875rem;
             color: var(--gray);
             font-weight: 500;
         }
 
         .headline {
-            font-family: 'Fira Code', monospace;
+            font-family: 'Cursor Gothic', 'Fira Code', monospace;
             font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 3rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
             text-align: center;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
+        }
+
+        .emoji {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        }
+
+        .slide-summary {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .content-section {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .bullet-list {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.8;
+            padding-left: 1.5rem;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .bullet-list .highlight-teal {
+            color: var(--teal);
+            font-weight: 400;
+        }
+
+        .bullet-list .highlight-orange {
+            color: var(--orange);
+            font-weight: 400;
+        }
+
+        .bullet-list .highlight-purple {
+            color: var(--purple);
+            font-weight: 400;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .inclusion-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .inclusion-table thead th {
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .inclusion-table tbody td {
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--gray);
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        .inclusion-table .area-label {
+            font-weight: 500;
+            color: #1a1a1a;
+            width: 200px;
         }
 
         .anchor-statement {
@@ -77,68 +236,63 @@
             text-align: center;
             line-height: 1.8;
             max-width: 900px;
-            margin-bottom: 4rem;
-            font-weight: 400;
+            margin-bottom: 0;
+            font-weight: 300;
         }
 
         .anchor-statement .highlight-purple {
             color: var(--purple);
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .anchor-statement .highlight-teal {
             color: var(--teal);
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .anchor-statement .highlight-orange {
             color: var(--orange);
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        .pillars {
-            display: flex;
-            justify-content: center;
-            gap: 6rem;
-            width: 100%;
-        }
-
-        .pillar {
+        .principles {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 900px;
         }
 
-        .pillar-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            width: 70px;
-            height: 70px;
+        .principle {
+            text-align: left;
+        }
+
+        .principle-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            background: var(--background);
         }
 
-        .pillar-icon.orange {
+        .principle-title.orange {
             color: var(--orange);
         }
 
-        .pillar-icon.teal {
-            color: var(--teal);
+        .principle-summary {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-left: 2.5rem;
         }
 
-        .pillar-icon.purple {
-            color: var(--purple);
-        }
-
-        .pillar-label {
-            font-family: 'Fira Code', monospace;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--dark-gray);
+        .principle-icon {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
         }
 
         /* Fullscreen mode */
@@ -151,7 +305,26 @@
     </style>
 </head>
 <body>
-    <div class="slide">
+    <div class="presentation-container">
+        <nav class="chapter-nav">
+            <h3>Chapters</h3>
+            <ul>
+                <li><a href="#" data-goto="1" class="active">The Vision</a></li>
+                <li><a href="#" data-goto="2">Principles</a></li>
+                <li><a href="#" data-goto="3"><span class="chapter-icon">⚡</span>Speed</a></li>
+                <li><a href="#" data-goto="4"><span class="chapter-icon">⚡</span>What's Included</a></li>
+                <li><a href="#" data-goto="5"><span class="chapter-icon">🤝</span>Proactive Partnership</a></li>
+                <li><a href="#" data-goto="6"><span class="chapter-icon">🤝</span>What's Included</a></li>
+                <li><a href="#" data-goto="7">How It's Delivered</a></li>
+                <li><a href="#" data-goto="8">AI & Automation</a></li>
+                <li><a href="#" data-goto="9">The Premium Bar</a></li>
+                <li><a href="#" data-goto="10">Proving Value</a></li>
+            </ul>
+        </nav>
+
+        <div class="slides-container">
+    <!-- Slide 1: The Vision of Premium Support -->
+    <div class="slide active" data-slide="1">
         <div class="slide-number">1/10</div>
         
         <h1 class="headline">The Vision of Premium Support</h1>
@@ -163,27 +336,140 @@
             <span class="highlight-teal">deeper value</span> from Cursor, and confidence that their 
             <span class="highlight-purple">feedback drives improvement</span>."
         </p>
+    </div>
+
+    <!-- Slide 2: Principles of Premium Support -->
+    <div class="slide" data-slide="2">
+        <div class="slide-number">2/10</div>
         
-        <div class="pillars">
-            <div class="pillar">
-                <div class="pillar-icon orange">⚡</div>
-                <span class="pillar-label">Faster Recovery</span>
+        <h1 class="headline">Principles of Premium Support</h1>
+        
+        <div class="principles">
+            <div class="principle">
+                <h2 class="principle-title"><span class="principle-icon emoji">⚡</span> Speed When Work Is Disrupted</h2>
+                <p class="principle-summary">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
             </div>
-            <div class="pillar">
-                <div class="pillar-icon teal">🤝</div>
-                <span class="pillar-label">Proactive Partnership</span>
-            </div>
-            <div class="pillar">
-                <div class="pillar-icon purple">📣</div>
-                <span class="pillar-label">Feedback That Drives Change</span>
+            
+            <div class="principle">
+                <h2 class="principle-title orange"><span class="principle-icon emoji">🤝</span> Proactive Partnership, Not Reactive Support</h2>
+                <p class="principle-summary">Risk detection, enablement, actionable insights, and a credible feedback loop.</p>
             </div>
         </div>
     </div>
 
+    <!-- Slide 3: Speed When Work Is Disrupted - Deep Dive -->
+    <div class="slide" data-slide="3">
+        <div class="slide-number">3/10</div>
+        
+        <h1 class="headline"><span class="emoji">⚡</span> Speed When Work Is Disrupted</h1>
+        
+        <p class="slide-summary">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
+        
+        <div class="content-section">
+            <h3 class="section-title">Principle concepts:</h3>
+            <ul class="bullet-list">
+                <li>Customers define <span class="highlight-teal">urgency</span> based on their <span class="highlight-orange">business impact</span>, not internal severity labels</li>
+                <li><span class="highlight-purple">24/7 availability</span> when customers are blocked from working</li>
+                <li><span class="highlight-teal">Reduced friction</span>: no queues, no handoffs, no severity debates</li>
+                <li><span class="highlight-orange">Live troubleshooting</span> used deliberately to shorten time-to-recovery</li>
+                <li>Targeted <span class="highlight-purple">post-incident analysis (RCA)</span> for customer-impacting incidents, focused on root cause and prevention</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 4: What's Included - Speed -->
+    <div class="slide" data-slide="4">
+        <div class="slide-number">4/10</div>
+        
+        <h1 class="headline"><span class="emoji">⚡</span> What's Included</h1>
+        
+        <div class="table-container">
+            <table class="inclusion-table">
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>Included (What It Is)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="area-label">Urgency & Severity</td>
+                        <td>Customer-defined severity based on business impact</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Coverage</td>
+                        <td>24/7/365 coverage for customer-defined P0</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Response</td>
+                        <td>Expedited SLAs aligned to customer impact</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Human Access</td>
+                        <td>Priority access to senior support engineers</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Troubleshooting</td>
+                        <td>Slack Huddles / live troubleshooting when it reduces time-to-recovery</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Issue Communication</td>
+                        <td>Proactive, customer-specific issue communication</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Named Support Lead</td>
+                        <td>Named team member responsible for support consistency and escalations</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Post-Issue Review</td>
+                        <td>Targeted RCA for customer-impacting P0 issues (agreed timeframe)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        </div>
+
     <script>
-        // Press F to toggle fullscreen
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+            
+            // Update chapter nav
+            const navLinks = document.querySelectorAll('.chapter-nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.chapter-nav a[data-goto="${currentSlide}"]`);
+            if (activeLink) activeLink.classList.add('active');
+        }
+
+        // Chapter nav click handlers
+        document.querySelectorAll('.chapter-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const slideNum = parseInt(link.dataset.goto);
+                if (slideNum <= totalSlides) {
+                    currentSlide = slideNum;
+                    showSlide(currentSlide);
+                }
+            });
+        });
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'f' || e.key === 'F') {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                currentSlide++;
+                showSlide(currentSlide);
+            } else if (e.key === 'ArrowLeft') {
+                currentSlide--;
+                showSlide(currentSlide);
+            } else if (e.key === 'f' || e.key === 'F') {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen();
                 } else {
