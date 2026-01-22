@@ -109,9 +109,8 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding: 4rem 6rem;
-            padding-top: 5rem;
+            justify-content: center;
+            padding: 3rem 6rem;
             position: relative;
         }
 
@@ -134,7 +133,7 @@
             font-size: 2.5rem;
             font-weight: 400;
             color: #1a1a1a;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
             letter-spacing: -0.02em;
         }
@@ -149,7 +148,7 @@
             font-weight: 300;
             color: var(--gray);
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             max-width: 800px;
         }
 
@@ -162,13 +161,18 @@
         .two-sections {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 2rem;
             width: 100%;
-            max-width: 800px;
+            max-width: 750px;
+            margin-top: 1rem;
         }
 
         .two-sections .content-section {
             max-width: 100%;
+        }
+
+        .two-sections .section-title {
+            margin-bottom: 0.75rem;
         }
 
         .stats-grid {
@@ -240,12 +244,11 @@
         }
 
         .icon-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 850px;
         }
 
         .icon-card {
@@ -253,11 +256,9 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 1.25rem 1rem;
+            padding: 1.5rem 1.25rem;
             background: var(--background);
             border-radius: 12px;
-            width: calc(33% - 1rem);
-            min-width: 200px;
         }
 
         .icon-card-icon {
@@ -302,15 +303,14 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .traits-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem 3rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem 2rem;
             width: 100%;
-            margin-bottom: 1rem;
         }
 
         .trait-item {
@@ -566,7 +566,8 @@
 
         .table-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 850px;
+            margin-top: 1.5rem;
         }
 
         .inclusion-table {
@@ -630,7 +631,8 @@
             flex-direction: column;
             gap: 2.5rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
+            margin-top: 1rem;
         }
 
         .principle {
@@ -949,6 +951,27 @@
         <h1 class="headline">The Premium Bar</h1>
         
         <div class="premium-bar-layout">
+            <div class="cocktail-section">
+                <div class="cocktail-glass">
+                    <div class="glass-top"></div>
+                    <div class="glass-body">
+                        <div class="liquid-container">
+                            <div class="liquid-layer layer-teal"></div>
+                            <div class="liquid-layer layer-orange"></div>
+                            <div class="liquid-layer layer-purple"></div>
+                        </div>
+                    </div>
+                    <div class="glass-base"></div>
+                    <div class="straw"></div>
+                    <div class="bubble b1"></div>
+                    <div class="bubble b2"></div>
+                    <div class="bubble b3"></div>
+                </div>
+                
+                <div class="cocktail-name">The Premium Support Punch</div>
+                <p class="cocktail-recipe">"Hospitality mindset, mixed with technical expertise and a garnish of impressive communication skills, served in a tall glass of relentless improvement."</p>
+            </div>
+            
             <div class="traits-section">
                 <div class="trait-item">
                     <span class="trait-icon">🧠</span>
@@ -974,27 +997,6 @@
                     <span class="trait-icon">🤝</span>
                     <span class="trait-text"><span class="highlight-purple">Accountability without ego</span> — owns it, fixes it</span>
                 </div>
-            </div>
-            
-            <div class="cocktail-section">
-                <div class="cocktail-glass">
-                    <div class="glass-top"></div>
-                    <div class="glass-body">
-                        <div class="liquid-container">
-                            <div class="liquid-layer layer-teal"></div>
-                            <div class="liquid-layer layer-orange"></div>
-                            <div class="liquid-layer layer-purple"></div>
-                        </div>
-                    </div>
-                    <div class="glass-base"></div>
-                    <div class="straw"></div>
-                    <div class="bubble b1"></div>
-                    <div class="bubble b2"></div>
-                    <div class="bubble b3"></div>
-                </div>
-                
-                <div class="cocktail-name">The Premium Support Punch</div>
-                <p class="cocktail-recipe">"Hospitality mindset, mixed with technical expertise and a garnish of impressive communication skills, served in a tall glass of relentless improvement."</p>
             </div>
         </div>
         
