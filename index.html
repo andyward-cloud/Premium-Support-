@@ -12,26 +12,28 @@
 
   <style>
     :root {
-      /* Slide 10 palette (single source of truth) */
+      /* Primary palette (Cursor-style) */
       --green: #14B8A6;
       --orange: #F97316;
       --purple: #8B5CF6;
 
+      /* Neutrals */
       --bg: #FAF9F7;
       --surface: #FFFFFF;
       --ink: #1a1a1a;
       --muted: #6B7280;
       --border: #E7E5E3;
 
-      --g10: rgba(20,184,166,0.10);
+      /* Filled pill tints */
+      --g10: rgba(20,184,166,0.12);
       --g18: rgba(20,184,166,0.18);
       --g28: rgba(20,184,166,0.28);
 
-      --o10: rgba(249,115,22,0.10);
+      --o10: rgba(249,115,22,0.12);
       --o18: rgba(249,115,22,0.18);
       --o28: rgba(249,115,22,0.28);
 
-      --p10: rgba(139,92,246,0.10);
+      --p10: rgba(139,92,246,0.12);
       --p18: rgba(139,92,246,0.18);
       --p28: rgba(139,92,246,0.28);
     }
@@ -40,7 +42,7 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -94,14 +96,13 @@
       border: 1px solid transparent;
     }
 
-    .chapter-nav a:hover { background-color: #f0efec; color: var(--ink); }
+    .chapter-nav a:hover { background: #f0efec; color: var(--ink); }
 
     .chapter-nav a.active {
-      background: transparent;
+      background: var(--g10);
+      border: 1px solid var(--g28);
       color: var(--ink);
       font-weight: 650;
-      border: 1px solid var(--g28);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
     }
 
     .chapter-nav .chapter-icon { width: 1.2rem; display: inline-flex; justify-content: center; }
@@ -116,12 +117,12 @@
       background: var(--surface);
       border-radius: 14px;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2.9rem 5.3rem; /* tightened + consistent */
+      padding: 2.9rem 5.3rem;
       position: relative;
       overflow: hidden;
     }
@@ -180,7 +181,7 @@
 
     .slide-summary.tight { margin-bottom: 0.9rem; }
 
-    /* PILLS (inline + headings) */
+    /* FILLED inline highlight pills (restored) */
     .pill-inline{
       display: inline-flex;
       align-items: center;
@@ -193,34 +194,15 @@
       line-height: 1.2;
       vertical-align: baseline;
       white-space: nowrap;
-      background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid transparent;
     }
     .pill-inline.sm{ padding: 0.14rem 0.48rem; font-size: 0.90em; }
 
-    .pill-inline.green { border-color: var(--g28); }
-    .pill-inline.orange{ border-color: var(--o28); }
-    .pill-inline.purple{ border-color: var(--p28); }
+    .pill-inline.green { background: var(--g10); border-color: var(--g28); }
+    .pill-inline.orange{ background: var(--o10); border-color: var(--o28); }
+    .pill-inline.purple{ background: var(--p10); border-color: var(--p28); }
 
-    .pill-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.38rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-family: 'Cursor Gothic', 'Fira Code', monospace;
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.85rem;
-      background: transparent;
-    }
-    .pill-title.green { border-color: var(--g28); }
-    .pill-title.orange { border-color: var(--o28); }
-    .pill-title.purple { border-color: var(--p28); }
-
-    /* VISION */
+    /* Vision quote */
     .anchor-statement {
       font-size: 1.32rem;
       font-style: italic;
@@ -231,7 +213,7 @@
       font-weight: 300;
     }
 
-    /* OUTLINED CARD SYSTEM (replaces filled boxes everywhere) */
+    /* OUTLINED CARDS (kept) */
     .card-grid {
       width: 100%;
       max-width: 1040px;
@@ -242,10 +224,10 @@
     .card-grid.three { grid-template-columns: repeat(3, 1fr); }
 
     .o-card{
-      background: transparent;                 /* <-- no fill */
+      background: transparent;
       border-radius: 14px;
-      border: 1px solid var(--border);         /* base outline */
-      padding: 1.05rem 1.05rem;                /* tighter */
+      border: 1px solid var(--border);
+      padding: 1.05rem 1.05rem;
       text-align: left;
       display: flex;
       flex-direction: column;
@@ -253,12 +235,13 @@
       min-height: 0;
     }
     .o-card.center { text-align: center; align-items: center; }
+
     .o-card.accent-green{ border-color: var(--g28); }
     .o-card.accent-orange{ border-color: var(--o28); }
     .o-card.accent-purple{ border-color: var(--p28); }
 
     .o-icon{
-      font-size: 1.75rem;                      /* tighter */
+      font-size: 1.75rem;
       margin-bottom: 0.45rem;
       line-height: 1;
     }
@@ -282,6 +265,23 @@
       gap: 0.5rem;
     }
 
+    /* Principle “heading as pill” */
+    .pill-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.38rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: 'Cursor Gothic', 'Fira Code', monospace;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+    }
+    .pill-title.green { background: var(--g10); border-color: var(--g28); }
+    .pill-title.orange{ background: var(--o10); border-color: var(--o28); }
+
     /* Two-section */
     .two-sections {
       display: grid;
@@ -290,14 +290,6 @@
       width: 100%;
       max-width: 1040px;
       margin-top: 0.4rem;
-    }
-
-    .section-title {
-      font-size: 1.02rem;
-      font-weight: 650;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
     }
 
     .bullet-list {
@@ -310,25 +302,32 @@
     .bullet-list li { margin-bottom: 0.42rem; }
 
     /* Tables */
-    .table-container { width: 100%; max-width: 1040px; margin-top: 0.5rem; }
-
-    .table-header-row{
-      width: 100%;
-      max-width: 1040px;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 0.75rem;
-    }
-
+    .table-container { width: 100%; max-width: 1040px; margin-top: 0.35rem; }
     .inclusion-table { width: 100%; border-collapse: collapse; }
+
     .inclusion-table thead th {
       text-align: left;
       font-size: 0.86rem;
       font-weight: 700;
-      color: var(--green);
       padding: 0.7rem 0.9rem;
       border-bottom: 1px solid #ecebea;
+      color: var(--muted);
     }
+
+    .th-pill{
+      display: inline-flex;
+      align-items: center;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border: 1px solid transparent;
+    }
+    .th-pill.green{ background: var(--g10); border-color: var(--g28); color: var(--ink); }
+    .th-pill.orange{ background: var(--o10); border-color: var(--o28); color: var(--ink); }
+    .th-pill.purple{ background: var(--p10); border-color: var(--p28); color: var(--ink); }
+
     .inclusion-table tbody td {
       padding: 0.7rem 0.9rem;
       font-size: 0.93rem;
@@ -344,17 +343,7 @@
       width: 240px;
     }
 
-    /* Principles */
-    .principles-grid{
-      width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.1rem;
-      margin-top: 0.35rem;
-    }
-
-    /* Pricing slide */
+    /* Pricing */
     .pricing-callout{
       width: 100%;
       max-width: 1040px;
@@ -389,29 +378,28 @@
     }
     .pricing-bullets li{ margin-bottom: 0.42rem; }
 
-    /* Premium Bar (Slide 9): left drink, right copy+traits */
-    .premium-bar-layout {
+    /* Premium Bar layout: drink left, name/desc right, boxes below */
+    .bar-top{
       width: 100%;
       max-width: 1040px;
       display: grid;
-      grid-template-columns: 0.95fr 1.25fr;
-      gap: 2.25rem;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 2.1rem;
       align-items: center;
-      margin-top: 0.2rem;
+      margin-top: 0.15rem;
     }
 
     .cocktail-left{
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 0.75rem;
     }
 
     .bar-right{
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 1.05rem;
+      gap: 0.55rem;
       align-items: flex-start;
     }
 
@@ -421,7 +409,6 @@
       font-weight: 400;
       color: var(--ink);
       letter-spacing: -0.01em;
-      margin-bottom: 0.2rem;
     }
 
     .bar-recipe{
@@ -432,31 +419,34 @@
       max-width: 560px;
     }
 
-    .traits-grid{
+    .bar-traits{
       width: 100%;
+      max-width: 1040px;
+      margin-top: 1.15rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem 0.85rem;
-      margin-top: 0.15rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
     }
 
-    .trait-item{
+    .trait-box{
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 0.85rem 0.9rem;
+      background: transparent;
       display: flex;
-      align-items: flex-start;
       gap: 0.65rem;
-      font-size: 0.93rem;
+      align-items: flex-start;
+      min-height: 76px;
+    }
+    .trait-box .ticon{ font-size: 1.15rem; margin-top: 0.08rem; line-height: 1; }
+    .trait-box .ttext{
+      font-size: 0.92rem;
       font-weight: 300;
       color: var(--muted);
-      line-height: 1.4;
-      padding: 0.6rem 0.7rem;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: transparent;
+      line-height: 1.35;
     }
 
-    .trait-icon { font-size: 1.1rem; line-height: 1; margin-top: 0.12rem; }
-
-    /* Animated drink (unchanged, just palette vars swapped) */
+    /* Animated drink */
     .cocktail-glass { position: relative; width: 120px; height: 180px; }
     .glass-body {
       position: absolute;
@@ -559,8 +549,8 @@
       .two-sections { grid-template-columns: 1fr; }
       .card-grid.three { grid-template-columns: 1fr 1fr; }
       .pricing-layout { grid-template-columns: 1fr; }
-      .premium-bar-layout { grid-template-columns: 1fr; gap: 1.4rem; }
-      .traits-grid { grid-template-columns: 1fr; }
+      .bar-top { grid-template-columns: 1fr; gap: 1.2rem; }
+      .bar-traits { grid-template-columns: 1fr; }
       .slide { padding: 2.4rem 3.1rem; }
       .chapter-nav { position: static; }
       body { padding: 1rem; }
@@ -588,7 +578,7 @@
     </nav>
 
     <div class="slides-container">
-      <!-- Slide 1: Vision -->
+      <!-- Slide 1 -->
       <div class="slide active" data-slide="1">
         <div class="kicker">Premium Support</div>
         <div class="slide-number">1/11</div>
@@ -610,7 +600,7 @@
         </p>
       </div>
 
-      <!-- Slide 2: Principles (headings as pills) -->
+      <!-- Slide 2 -->
       <div class="slide" data-slide="2">
         <div class="kicker">Premium Support</div>
         <div class="slide-number">2/11</div>
@@ -618,7 +608,7 @@
         <h1 class="headline">The Principles</h1>
         <p class="slide-summary">Two promises: speed in disruption, and proactive partnership.</p>
 
-        <div class="principles-grid">
+        <div class="card-grid two">
           <div class="o-card accent-green">
             <div class="pill-title green"><span class="emoji">⚡</span> Speed When Work Is Disrupted</div>
             <div class="o-text">Fast recovery, customer-defined urgency, reduced friction — with clear learning after incidents.</div>
@@ -631,7 +621,7 @@
         </div>
       </div>
 
-      <!-- Slide 3: Speed (outlined cards) -->
+      <!-- Slide 3 -->
       <div class="slide" data-slide="3">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">3/11</div>
@@ -672,23 +662,19 @@
         </div>
       </div>
 
-      <!-- Slide 4: What's Included (table title as pill) -->
+      <!-- Slide 4 (Removed “Speed — Inclusions” header; keep table. Make Area/Included pills.) -->
       <div class="slide" data-slide="4">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">4/11</div>
 
         <h1 class="headline"><span class="emoji">⚡</span> What's Included</h1>
 
-        <div class="table-header-row">
-          <div class="pill-title green"><span class="emoji">⚡</span> Speed — Inclusions</div>
-        </div>
-
         <div class="table-container">
           <table class="inclusion-table">
             <thead>
               <tr>
-                <th>Area</th>
-                <th>Included (What It Is)</th>
+                <th><span class="th-pill green">Area</span></th>
+                <th><span class="th-pill purple">Included</span></th>
               </tr>
             </thead>
             <tbody>
@@ -729,7 +715,7 @@
         </div>
       </div>
 
-      <!-- Slide 5: Partnership (outlined cards, tighter headline) -->
+      <!-- Slide 5 -->
       <div class="slide" data-slide="5">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">5/11</div>
@@ -770,23 +756,19 @@
         </div>
       </div>
 
-      <!-- Slide 6: What's Included (table title as pill) -->
+      <!-- Slide 6 (Removed “Partnership — Inclusions” header; keep table. Make Area/Included pills.) -->
       <div class="slide" data-slide="6">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">6/11</div>
 
         <h1 class="headline"><span class="emoji">🤝</span> What's Included</h1>
 
-        <div class="table-header-row">
-          <div class="pill-title orange"><span class="emoji">🤝</span> Partnership — Inclusions</div>
-        </div>
-
         <div class="table-container">
           <table class="inclusion-table">
             <thead>
               <tr>
-                <th>Area</th>
-                <th>Included (What It Is)</th>
+                <th><span class="th-pill orange">Area</span></th>
+                <th><span class="th-pill purple">Included</span></th>
               </tr>
             </thead>
             <tbody>
@@ -815,7 +797,7 @@
         </div>
       </div>
 
-      <!-- Slide 7: Delivery (outlined two-card layout) -->
+      <!-- Slide 7 -->
       <div class="slide" data-slide="7">
         <div class="kicker">Operating Model</div>
         <div class="slide-number">7/11</div>
@@ -844,7 +826,7 @@
         </div>
       </div>
 
-      <!-- Slide 8: Staffing (outlined cards) -->
+      <!-- Slide 8 -->
       <div class="slide" data-slide="8">
         <div class="kicker">Coverage</div>
         <div class="slide-number">8/11</div>
@@ -885,7 +867,7 @@
         </div>
       </div>
 
-      <!-- Slide 9: Premium Bar (drink left, copy right) -->
+      <!-- Slide 9 (requested layout) -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
         <div class="slide-number">9/11</div>
@@ -893,7 +875,7 @@
         <h1 class="headline">The Premium Bar</h1>
         <p class="slide-summary tight">What it takes to deliver Premium Support consistently (and credibly).</p>
 
-        <div class="premium-bar-layout">
+        <div class="bar-top">
           <div class="cocktail-left">
             <div class="cocktail-glass">
               <div class="glass-top"></div>
@@ -913,50 +895,48 @@
           </div>
 
           <div class="bar-right">
-            <div>
-              <div class="bar-title">The Premium Support Punch</div>
-              <div class="bar-recipe">
-                Hospitality mindset, mixed with technical judgment and a garnish of sharp communication —
-                served with relentless improvement.
-              </div>
+            <div class="bar-title">The Premium Support Punch</div>
+            <div class="bar-recipe">
+              Hospitality mindset, mixed with technical judgment and a garnish of sharp communication —
+              served with relentless improvement.
             </div>
+          </div>
+        </div>
 
-            <div class="traits-grid">
-              <div class="trait-item" style="border-color: var(--g28);">
-                <span class="trait-icon">🧠</span>
-                <span><span class="pill-inline sm green">Technical judgment</span> — knowing when to apply it</span>
-              </div>
+        <div class="bar-traits">
+          <div class="trait-box" style="border-color: var(--g28);">
+            <div class="ticon">🧠</div>
+            <div class="ttext"><span class="pill-inline sm green">Technical judgment</span> — knowing when to apply it</div>
+          </div>
 
-              <div class="trait-item" style="border-color: var(--o28);">
-                <span class="trait-icon">🏢</span>
-                <span><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</span>
-              </div>
+          <div class="trait-box" style="border-color: var(--o28);">
+            <div class="ticon">🏢</div>
+            <div class="ttext"><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</div>
+          </div>
 
-              <div class="trait-item" style="border-color: var(--p28);">
-                <span class="trait-icon">💜</span>
-                <span><span class="pill-inline sm purple">Customer obsession</span> — relentless outcomes focus</span>
-              </div>
+          <div class="trait-box" style="border-color: var(--p28);">
+            <div class="ticon">💜</div>
+            <div class="ttext"><span class="pill-inline sm purple">Customer obsession</span> — relentless outcomes focus</div>
+          </div>
 
-              <div class="trait-item" style="border-color: var(--g28);">
-                <span class="trait-icon">💬</span>
-                <span><span class="pill-inline sm green">Communication</span> — engineers to executives</span>
-              </div>
+          <div class="trait-box" style="border-color: var(--g28);">
+            <div class="ticon">💬</div>
+            <div class="ttext"><span class="pill-inline sm green">Communication</span> — engineers to executives</div>
+          </div>
 
-              <div class="trait-item" style="border-color: var(--o28);">
-                <span class="trait-icon">🧘</span>
-                <span><span class="pill-inline sm orange">Emotional intelligence</span> — composure + empathy</span>
-              </div>
+          <div class="trait-box" style="border-color: var(--o28);">
+            <div class="ticon">🧘</div>
+            <div class="ttext"><span class="pill-inline sm orange">Emotional intelligence</span> — composure + empathy</div>
+          </div>
 
-              <div class="trait-item" style="border-color: var(--p28);">
-                <span class="trait-icon">🤝</span>
-                <span><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</span>
-              </div>
-            </div>
+          <div class="trait-box" style="border-color: var(--p28);">
+            <div class="ticon">🤝</div>
+            <div class="ttext"><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 10: Pricing -->
+      <!-- Slide 10 (updated pricing content) -->
       <div class="slide" data-slide="10">
         <div class="kicker">Commercial Model</div>
         <div class="slide-number">10/11</div>
@@ -971,10 +951,9 @@
           <div class="o-card accent-green">
             <div class="o-title"><span class="emoji">💸</span> How It’s Sold</div>
             <ul class="pricing-bullets">
-              <li><span class="pill-inline sm green">Annual add-on</span></li>
+              <li>Annual add-on to contract</li>
               <li>Priced as a <span class="pill-inline sm purple">% of ARR</span></li>
-              <li><span class="pill-inline sm orange">Minimum $ value</span> to ensure appropriate customer size</li>
-              <li><span class="pill-inline sm green">Capacity-controlled</span></li>
+              <li>Minimum $ value to ensure value for <span class="pill-inline sm orange">CX</span></li>
               <li>Staffed to <span class="pill-inline sm purple">inbound volume</span>, not customer count</li>
             </ul>
           </div>
@@ -982,16 +961,15 @@
           <div class="o-card accent-purple">
             <div class="o-title"><span class="emoji">🧠</span> Why This Works</div>
             <ul class="pricing-bullets">
-              <li>% of ARR scales with <span class="pill-inline sm purple">complexity</span> + <span class="pill-inline sm purple">blast radius</span></li>
-              <li>Predictable for customers, <span class="pill-inline sm green">forecastable</span> for Cursor</li>
-              <li>Capacity planned against real <span class="pill-inline sm orange">inbound</span> (tickets, incidents, troubleshooting)</li>
-              <li>If we can’t staff it predictably, <span class="pill-inline sm green">we don’t sell it</span></li>
+              <li>Predictable for customers, forecastable for Cursor</li>
+              <li>% of revenue protects value perception & avoids oversell</li>
+              <li>Staffing to volume maximizes capacity</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Slide 11: Internal Value (outlined cards + fewer pills) -->
+      <!-- Slide 11 -->
       <div class="slide" data-slide="11">
         <div class="kicker">Internal Value</div>
         <div class="slide-number">11/11</div>
@@ -1006,17 +984,17 @@
           </div>
 
           <div class="o-card accent-orange">
-            <div class="o-title"><span class="emoji">2️⃣</span> Fewer Exec Fire Drills</div>
+            <div class="o-title"><span class="emoji">2️⃣</span> Prevents Exec Fire Drills</div>
             <div class="o-text">Earlier containment + proactive comms means fewer late-cycle surprise escalations.</div>
           </div>
 
           <div class="o-card accent-green">
-            <div class="o-title"><span class="emoji">3️⃣</span> Faster Enterprise Learning</div>
+            <div class="o-title"><span class="emoji">3️⃣</span> Deepens Enterprise Understanding</div>
             <div class="o-text">Regular touchpoints reveal real workflows, friction, and priorities — beyond tickets.</div>
           </div>
 
           <div class="o-card accent-purple">
-            <div class="o-title"><span class="emoji">4️⃣</span> Better Product Signal</div>
+            <div class="o-title"><span class="emoji">4️⃣</span> Improves Product Signal</div>
             <div class="o-text">Turns issues into patterns and context — better prioritization, less loudest-customer bias.</div>
           </div>
         </div>
@@ -1054,11 +1032,9 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') {
-        showSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowLeft') {
-        showSlide(currentSlide - 1);
-      } else if (e.key === 'f' || e.key === 'F') {
+      if (e.key === 'ArrowRight' || e.key === ' ') showSlide(currentSlide + 1);
+      else if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+      else if (e.key === 'f' || e.key === 'F') {
         if (!document.fullscreenElement) document.documentElement.requestFullscreen();
         else document.exitFullscreen();
       }
