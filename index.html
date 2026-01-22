@@ -17,14 +17,14 @@
       --orange: #F97316;
       --purple: #8B5CF6;
 
-      /* Neutrals tuned to match Slide 10 vibe */
+      /* Neutrals */
       --bg: #FAF9F7;
       --surface: #FFFFFF;
       --ink: #1a1a1a;
       --muted: #6B7280;
       --border: #e9e7e4;
 
-      /* Accent tints (used for pills, nav active, subtle highlights) */
+      /* Accent tints (pill fill + border) */
       --green-10: rgba(20,184,166,0.10);
       --green-18: rgba(20,184,166,0.18);
       --green-25: rgba(20,184,166,0.25);
@@ -130,6 +130,11 @@
 
     .slide.active { display: flex; }
 
+    /* Tighter canvas for dense grid slides */
+    .slide.tight-canvas {
+      padding: 2.6rem 5.25rem;
+    }
+
     .slide-number {
       position: absolute;
       top: 1.3rem;
@@ -181,20 +186,30 @@
       line-height: 1.55;
     }
 
-    /* === NEW: Inline pill highlights (Slide 10 style) === */
+    .slide-summary.tight {
+      margin-bottom: 1.05rem;
+    }
+
+    /* === Pill Highlights (Slide 10 style everywhere) === */
     .pill-inline{
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
       padding: 0.18rem 0.55rem;
       border-radius: 999px;
-      font-style: normal;            /* so italics don't distort the pill */
+      font-style: normal;           /* avoid italic distortion */
       font-weight: 600;
-      font-size: 0.95em;             /* slightly smaller than surrounding text */
+      font-size: 0.95em;
       line-height: 1.2;
       vertical-align: baseline;
       white-space: nowrap;
     }
+
+    .pill-inline.sm{
+      padding: 0.14rem 0.48rem;
+      font-size: 0.90em;
+    }
+
     .pill-inline.green{
       background: var(--green-10);
       border: 1px solid var(--green-18);
@@ -210,6 +225,7 @@
       border: 1px solid var(--purple-18);
       color: var(--ink);
     }
+
     .anchor-statement .pill-inline{
       transform: translateY(-0.02em);
       margin: 0 0.05rem;
@@ -244,11 +260,6 @@
     }
 
     .bullet-list li { margin-bottom: 0.5rem; }
-
-    /* Keep old highlight classes for other slides (still color-based) */
-    .highlight-green { color: var(--green); font-weight: 600; }
-    .highlight-orange { color: var(--orange); font-weight: 600; }
-    .highlight-purple { color: var(--purple); font-weight: 600; }
 
     /* Tables */
     .table-container { width: 100%; max-width: 980px; margin-top: 1.1rem; }
@@ -288,7 +299,7 @@
       font-weight: 300;
     }
 
-    /* Icon cards (alignment fixes) */
+    /* Icon cards */
     .icon-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -303,20 +314,39 @@
       align-items: center;
       justify-content: flex-start;
       text-align: center;
-      padding: 1.25rem 1.15rem;
+      padding: 1.15rem 1.05rem;
       background: var(--bg);
       border-radius: 14px;
       border: 1px solid rgba(0,0,0,0.04);
-      min-height: 140px;
     }
 
-    .icon-card-icon { font-size: 2rem; margin-bottom: 0.65rem; }
+    .icon-card-icon { font-size: 1.95rem; margin-bottom: 0.55rem; }
     .icon-card-text {
       font-size: 0.95rem;
       font-weight: 300;
       color: var(--muted);
       line-height: 1.5;
       max-width: 22rem;
+    }
+
+    /* Compact grid for Slides 3 & 5: 3 columns + tighter cards = less blank space */
+    .icon-cards.compact {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+      max-width: 1040px;
+    }
+    .icon-cards.compact .icon-card {
+      padding: 0.95rem 0.9rem;
+      border-radius: 13px;
+    }
+    .icon-cards.compact .icon-card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.45rem;
+    }
+    .icon-cards.compact .icon-card-text {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      max-width: 18rem;
     }
 
     /* Principles */
@@ -371,7 +401,7 @@
     .traits-section {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.25rem 1.75rem;
+      gap: 1.1rem 1.5rem;
       width: 100%;
     }
 
@@ -664,6 +694,15 @@
       border-radius: 0;
       box-shadow: none;
     }
+
+    /* If screen is narrow, fall back to 2 cols */
+    @media (max-width: 1100px) {
+      .icon-cards.compact { grid-template-columns: 1fr 1fr; }
+      .slide { padding: 2.6rem 3.2rem; }
+      .slide.tight-canvas { padding: 2.4rem 3.2rem; }
+      .chapter-nav { position: static; }
+      body { padding: 1rem; }
+    }
   </style>
 </head>
 
@@ -688,7 +727,7 @@
     </nav>
 
     <div class="slides-container">
-      <!-- Slide 1 (pill-style highlights test) -->
+      <!-- Slide 1 -->
       <div class="slide active" data-slide="1">
         <div class="kicker">Premium Support</div>
         <div class="slide-number">1/12</div>
@@ -730,44 +769,56 @@
         </div>
       </div>
 
-      <!-- Slide 3 -->
-      <div class="slide" data-slide="3">
+      <!-- Slide 3 (NEATENED: 3-column compact grid + tighter canvas + pills) -->
+      <div class="slide tight-canvas" data-slide="3">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">3/12</div>
 
         <h1 class="headline"><span class="emoji">⚡</span> Speed When Work Is Disrupted</h1>
 
-        <p class="slide-summary">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
+        <p class="slide-summary tight">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
 
-        <div class="icon-cards">
+        <div class="icon-cards compact">
           <div class="icon-card">
             <div class="icon-card-icon">🎯</div>
-            <div class="icon-card-text"><span class="highlight-green">Customer-defined</span> urgency based on business impact</div>
+            <div class="icon-card-text">
+              <span class="pill-inline sm green">Customer-defined</span> urgency based on business impact
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🕐</div>
-            <div class="icon-card-text"><span class="highlight-orange">24/7 availability</span> when blocked from working</div>
+            <div class="icon-card-text">
+              <span class="pill-inline sm orange">24/7 availability</span> when blocked from working
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">⚡</div>
-            <div class="icon-card-text"><span class="highlight-purple">No queues</span>, no handoffs, no debates</div>
+            <div class="icon-card-text">
+              <span class="pill-inline sm purple">No queues</span>, no handoffs, no debates
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🔧</div>
-            <div class="icon-card-text"><span class="highlight-green">Live troubleshooting</span> to shorten time-to-recovery</div>
+            <div class="icon-card-text">
+              <span class="pill-inline sm green">Live troubleshooting</span> to shorten time-to-recovery
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">📋</div>
-            <div class="icon-card-text">Targeted <span class="highlight-orange">RCA</span> focused on root cause & prevention</div>
+            <div class="icon-card-text">
+              Targeted <span class="pill-inline sm orange">RCA</span> focused on root cause & prevention
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🧭</div>
-            <div class="icon-card-text"><span class="highlight-purple">One accountable owner</span> coordinating across Cursor</div>
+            <div class="icon-card-text">
+              <span class="pill-inline sm purple">One accountable owner</span> coordinating across Cursor
+            </div>
           </div>
         </div>
       </div>
@@ -825,46 +876,56 @@
         </div>
       </div>
 
-      <!-- Slide 5 (fixed layout + smaller headline) -->
-      <div class="slide" data-slide="5">
+      <!-- Slide 5 (NEATENED: 3-column compact grid + tighter canvas + pills) -->
+      <div class="slide tight-canvas" data-slide="5">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">5/12</div>
 
         <h1 class="headline tight"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
 
-        <p class="slide-summary" style="margin-bottom:1.15rem;">
-          Risk detection, unlock potential, actionable insights, and a credible feedback loop.
-        </p>
+        <p class="slide-summary tight">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
 
-        <div class="icon-cards">
+        <div class="icon-cards compact">
           <div class="icon-card">
             <div class="icon-card-icon">🔍</div>
-            <div class="icon-card-text">Look for <span class="highlight-orange">risk signals</span> and <span class="highlight-green">friction</span>, not just incoming tickets</div>
+            <div class="icon-card-text">
+              Look for <span class="pill-inline sm orange">risk signals</span> and <span class="pill-inline sm green">friction</span>, not just incoming tickets
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">💡</div>
-            <div class="icon-card-text">Proactively share <span class="highlight-purple">insights, patterns, and recommendations</span></div>
+            <div class="icon-card-text">
+              Proactively share <span class="pill-inline sm purple">insights</span>, <span class="pill-inline sm purple">patterns</span>, and <span class="pill-inline sm purple">recommendations</span>
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">📚</div>
-            <div class="icon-card-text">Seek opportunities to <span class="highlight-orange">deepen customer understanding</span> of the product</div>
+            <div class="icon-card-text">
+              Seek opportunities to <span class="pill-inline sm orange">deepen understanding</span> of the product
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">📣</div>
-            <div class="icon-card-text">Clear path for <span class="highlight-green">customer feedback</span> to reach Product, Engineering, Leadership</div>
+            <div class="icon-card-text">
+              Clear path for <span class="pill-inline sm green">customer feedback</span> to reach Product, Engineering, Leadership
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🧪</div>
-            <div class="icon-card-text">Turn repeat issues into <span class="highlight-purple">automation + hardening</span></div>
+            <div class="icon-card-text">
+              Turn repeat issues into <span class="pill-inline sm purple">automation</span> + <span class="pill-inline sm purple">hardening</span>
+            </div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🗺️</div>
-            <div class="icon-card-text">Build a shared plan with <span class="highlight-orange">clear milestones</span></div>
+            <div class="icon-card-text">
+              Build a shared plan with <span class="pill-inline sm orange">clear milestones</span>
+            </div>
           </div>
         </div>
       </div>
@@ -910,7 +971,7 @@
         </div>
       </div>
 
-      <!-- Slide 7 -->
+      <!-- Slide 7 (pills) -->
       <div class="slide" data-slide="7">
         <div class="kicker">Operating Model</div>
         <div class="slide-number">7/12</div>
@@ -921,24 +982,24 @@
           <div class="content-section">
             <h3 class="section-title">Meet the Customer Where They Are</h3>
             <ul class="bullet-list">
-              <li>Dedicated shared <span class="highlight-orange">Slack channel</span></li>
-              <li><span class="highlight-green">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
-              <li>Live chat / async support when it best <span class="highlight-purple">reduces friction</span></li>
+              <li>Dedicated shared <span class="pill-inline sm orange">Slack channel</span></li>
+              <li><span class="pill-inline sm green">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
+              <li>Live chat / async support when it best <span class="pill-inline sm purple">reduces friction</span></li>
             </ul>
           </div>
 
           <div class="content-section">
             <h3 class="section-title">Holistic Ownership Across the Company</h3>
             <ul class="bullet-list">
-              <li>Focus to build and test <span class="highlight-orange">AI solutions</span> to expedite resolution for Premium customers</li>
-              <li>Tight coordination across <span class="highlight-green">Support, Account teams, Product, Engineering, Leadership</span></li>
-              <li>Feedback is <span class="highlight-purple">captured, routed, and reflected back</span> visibly</li>
+              <li>Focus to build and test <span class="pill-inline sm orange">AI solutions</span> to expedite resolution for Premium customers</li>
+              <li>Tight coordination across <span class="pill-inline sm green">Support</span>, <span class="pill-inline sm green">Account teams</span>, <span class="pill-inline sm green">Product</span>, <span class="pill-inline sm green">Engineering</span>, <span class="pill-inline sm green">Leadership</span></li>
+              <li>Feedback is <span class="pill-inline sm purple">captured</span>, <span class="pill-inline sm purple">routed</span>, and <span class="pill-inline sm purple">reflected back</span> visibly</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Slide 8 -->
+      <!-- Slide 8 (pills) -->
       <div class="slide" data-slide="8">
         <div class="kicker">Coverage</div>
         <div class="slide-number">8/12</div>
@@ -948,37 +1009,37 @@
         <div class="icon-cards">
           <div class="icon-card">
             <div class="icon-card-icon">🤖</div>
-            <div class="icon-card-text"><span class="highlight-green">AI layer</span> to enhance speed and proactivity</div>
+            <div class="icon-card-text"><span class="pill-inline sm green">AI layer</span> to enhance speed and proactivity</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">👥</div>
-            <div class="icon-card-text"><span class="highlight-orange">Pooled senior support team</span>, staffed to inbound volume not # of accounts</div>
+            <div class="icon-card-text"><span class="pill-inline sm orange">Pooled senior support team</span>, staffed to inbound volume not # of accounts</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🎯</div>
-            <div class="icon-card-text"><span class="highlight-purple">Named Senior TSE</span> per account for consistency, continuity and escalation support</div>
+            <div class="icon-card-text"><span class="pill-inline sm purple">Named Senior TSE</span> per account for consistency, continuity and escalation support</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🌍</div>
-            <div class="icon-card-text"><span class="highlight-green">Follow-the-sun</span> model to ensure 24/7/365 availability for customer-defined P0</div>
+            <div class="icon-card-text"><span class="pill-inline sm green">Follow-the-sun</span> model to ensure 24/7/365 availability for customer-defined P0</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🧠</div>
-            <div class="icon-card-text"><span class="highlight-orange">Escalation network</span> into Engineering for true “blocked work” moments</div>
+            <div class="icon-card-text"><span class="pill-inline sm orange">Escalation network</span> into Engineering for true “blocked work” moments</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">🧾</div>
-            <div class="icon-card-text">Clear <span class="highlight-purple">roles & playbooks</span> so customers always know what happens next</div>
+            <div class="icon-card-text">Clear <span class="pill-inline sm purple">roles</span> & <span class="pill-inline sm purple">playbooks</span> so customers always know what happens next</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 9 -->
+      <!-- Slide 9 (pills) -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
         <div class="slide-number">9/12</div>
@@ -1010,27 +1071,27 @@
           <div class="traits-section">
             <div class="trait-item">
               <span class="trait-icon">🧠</span>
-              <span class="trait-text"><span class="highlight-green">Technical judgment</span> — knowing when and how to apply it</span>
+              <span class="trait-text"><span class="pill-inline sm green">Technical judgment</span> — knowing when and how to apply it</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">🏢</span>
-              <span class="trait-text"><span class="highlight-orange">Enterprise mindset</span> — comfortable with ambiguity</span>
+              <span class="trait-text"><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">💜</span>
-              <span class="trait-text"><span class="highlight-purple">Customer obsession</span> — relentless focus on outcomes</span>
+              <span class="trait-text"><span class="pill-inline sm purple">Customer obsession</span> — relentless focus on outcomes</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">💬</span>
-              <span class="trait-text"><span class="highlight-green">Communication at all levels</span> — engineers to executives</span>
+              <span class="trait-text"><span class="pill-inline sm green">Communication</span> — engineers to executives</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">🧘</span>
-              <span class="trait-text"><span class="highlight-orange">Emotional intelligence</span> — composure and empathy</span>
+              <span class="trait-text"><span class="pill-inline sm orange">Emotional intelligence</span> — composure and empathy</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">🤝</span>
-              <span class="trait-text"><span class="highlight-purple">Accountability without ego</span> — owns it, fixes it</span>
+              <span class="trait-text"><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</span>
             </div>
           </div>
         </div>
@@ -1126,6 +1187,7 @@
           <div class="kpi">
             <div class="kpi-top">
               <div class="kpi-title">Proactive Signals Caught</div>
+              <div class="kpi-icon">🔍</div>
             </div>
             <div class="kpi-number green">↑</div>
             <div class="kpi-desc">Risk indicators detected before customers are blocked (SSO/API/errors).</div>
@@ -1134,6 +1196,7 @@
           <div class="kpi">
             <div class="kpi-top">
               <div class="kpi-title">Customer Effort</div>
+              <div class="kpi-icon">🧠</div>
             </div>
             <div class="kpi-number orange">↓</div>
             <div class="kpi-desc">Less chasing, fewer handoffs—customers know who owns the issue and what happens next.</div>
@@ -1142,6 +1205,7 @@
           <div class="kpi">
             <div class="kpi-top">
               <div class="kpi-title">Feedback Loop Velocity</div>
+              <div class="kpi-icon">📣</div>
             </div>
             <div class="kpi-number purple">↑</div>
             <div class="kpi-desc">How quickly customer feedback becomes decisions, fixes, and visible outcomes.</div>
