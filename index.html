@@ -12,25 +12,35 @@
 
   <style>
     :root {
-      /* Cursor AI Color Palette - Code Editor */
-      --purple: #8B5CF6;
+      /* Slide 10 “pill” palette is now the single source of truth everywhere */
+      --green: #14B8A6;
       --orange: #F97316;
-      --teal: #14B8A6;
-      --red: #F87171;
-      --gray: #6B7280;
-      --dark-gray: #374151;
-      --background: #FAF9F7;
-      --white: #FFFFFF;
+      --purple: #8B5CF6;
+
+      /* Neutrals tuned to match Slide 10 vibe */
+      --bg: #FAF9F7;
+      --surface: #FFFFFF;
       --ink: #1a1a1a;
+      --muted: #6B7280;
       --border: #e9e7e4;
-      --soft: #f3f2ef;
+
+      /* Accent tints (used for pills, nav active, subtle highlights) */
+      --green-10: rgba(20,184,166,0.10);
+      --green-18: rgba(20,184,166,0.18);
+      --green-25: rgba(20,184,166,0.25);
+
+      --orange-10: rgba(249,115,22,0.10);
+      --orange-18: rgba(249,115,22,0.18);
+
+      --purple-10: rgba(139,92,246,0.10);
+      --purple-18: rgba(139,92,246,0.18);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--background);
+      background-color: var(--bg);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -47,6 +57,7 @@
       align-items: flex-start;
     }
 
+    /* NAV */
     .chapter-nav {
       width: 240px;
       flex-shrink: 0;
@@ -58,16 +69,15 @@
 
     .chapter-nav h3 {
       font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--gray);
+      font-weight: 600;
+      color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       margin-bottom: 1rem;
       padding-left: 0.75rem;
     }
 
     .chapter-nav ul { list-style: none; }
-
     .chapter-nav li { margin-bottom: 0.25rem; }
 
     .chapter-nav a {
@@ -76,11 +86,12 @@
       gap: 0.5rem;
       padding: 0.55rem 0.75rem;
       font-size: 0.92rem;
-      font-weight: 400;
-      color: var(--gray);
+      font-weight: 450;
+      color: var(--muted);
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 10px;
       transition: all 0.15s ease;
+      border: 1px solid transparent;
     }
 
     .chapter-nav a:hover {
@@ -89,21 +100,22 @@
     }
 
     .chapter-nav a.active {
-      background-color: rgba(20,184,166,0.12);
+      background: var(--green-10);
       color: var(--ink);
-      font-weight: 500;
-      border: 1px solid rgba(20,184,166,0.25);
+      font-weight: 600;
+      border: 1px solid var(--green-25);
     }
 
     .chapter-nav .chapter-icon { width: 1.2rem; display: inline-flex; justify-content: center; }
 
+    /* SLIDES */
     .slides-container { flex: 1; }
 
     .slide {
       width: 100%;
       max-width: 1200px;
       aspect-ratio: 16 / 9;
-      background: var(--white);
+      background: var(--surface);
       border-radius: 14px;
       border: 1px solid var(--border);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
@@ -123,8 +135,8 @@
       top: 1.3rem;
       right: 1.8rem;
       font-size: 0.875rem;
-      color: var(--gray);
-      font-weight: 500;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .kicker {
@@ -133,34 +145,48 @@
       left: 1.8rem;
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray);
-      font-weight: 500;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      font-weight: 600;
     }
 
+    /* Headline system: Slide 10 feel everywhere */
     .headline {
       font-family: 'Cursor Gothic', 'Fira Code', monospace;
-      font-size: 2.5rem;
+      font-size: clamp(2.05rem, 3.2vw, 2.65rem);
       font-weight: 400;
       color: var(--ink);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       text-align: center;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      line-height: 1.08;
+    }
+
+    /* For long headlines (fixes Slide 5) */
+    .headline.tight {
+      font-size: clamp(1.70rem, 2.55vw, 2.10rem);
+      line-height: 1.10;
+      margin-bottom: 0.9rem;
     }
 
     .emoji { font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
 
     .slide-summary {
-      font-size: 1.2rem;
+      font-size: 1.12rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       text-align: center;
-      margin-bottom: 2rem;
-      max-width: 860px;
+      margin-bottom: 1.6rem;
+      max-width: 920px;
       line-height: 1.55;
     }
 
+    /* Highlights map to the 3 accent colors */
+    .highlight-teal, .highlight-green { color: var(--green); font-weight: 600; }
+    .highlight-orange { color: var(--orange); font-weight: 600; }
+    .highlight-purple { color: var(--purple); font-weight: 600; }
+
+    /* Two-column content */
     .content-section { width: 100%; max-width: 900px; text-align: left; }
 
     .two-sections {
@@ -169,37 +195,35 @@
       gap: 2rem;
       width: 100%;
       max-width: 850px;
-      margin-top: 1rem;
+      margin-top: 0.6rem;
     }
 
     .section-title {
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.05rem;
+      font-weight: 600;
       color: var(--ink);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
     }
 
     .bullet-list {
       font-size: 1rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.8;
       padding-left: 1.5rem;
     }
 
     .bullet-list li { margin-bottom: 0.5rem; }
 
-    .highlight-teal { color: var(--teal); font-weight: 500; }
-    .highlight-orange { color: var(--orange); font-weight: 500; }
-    .highlight-purple { color: var(--purple); font-weight: 500; }
-
-    .table-container { width: 100%; max-width: 980px; margin-top: 1.25rem; }
+    /* Tables */
+    .table-container { width: 100%; max-width: 980px; margin-top: 1.1rem; }
     .inclusion-table { width: 100%; border-collapse: collapse; }
     .inclusion-table thead th {
       text-align: left;
       font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--teal);
+      font-weight: 700;
+      color: var(--green);
       padding: 0.75rem 1rem;
       border-bottom: 1px solid #e7e7e7;
     }
@@ -207,21 +231,22 @@
       padding: 0.75rem 1rem;
       font-size: 0.95rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       border-bottom: 1px solid #f1f1f1;
       vertical-align: top;
       line-height: 1.45;
     }
     .inclusion-table .area-label {
-      font-weight: 600;
+      font-weight: 650;
       color: var(--ink);
       width: 220px;
     }
 
+    /* Vision quote */
     .anchor-statement {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-style: italic;
-      color: var(--gray);
+      color: var(--muted);
       text-align: center;
       line-height: 1.8;
       max-width: 980px;
@@ -229,60 +254,71 @@
       font-weight: 300;
     }
 
+    /* Icon cards (alignment fixes + Slide 10 feel) */
     .icon-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 1.1rem;
       width: 100%;
-      max-width: 950px;
+      max-width: 980px;
     }
 
     .icon-card {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start; /* alignment fix */
       text-align: center;
-      padding: 1.5rem 1.25rem;
-      background: var(--background);
+      padding: 1.25rem 1.15rem;
+      background: var(--bg);
       border-radius: 14px;
       border: 1px solid rgba(0,0,0,0.04);
+      min-height: 140px; /* alignment fix */
     }
 
-    .icon-card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .icon-card-text { font-size: 0.95rem; font-weight: 300; color: var(--gray); line-height: 1.5; }
+    .icon-card-icon { font-size: 2rem; margin-bottom: 0.65rem; }
+    .icon-card-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 22rem;
+    }
 
+    /* Principles */
     .principles {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 2.2rem;
       width: 100%;
       max-width: 860px;
-      margin-top: 1rem;
+      margin-top: 0.9rem;
     }
 
     .principle { text-align: left; }
 
     .principle-title {
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: var(--teal);
-      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 650;
+      color: var(--green);
+      margin-bottom: 0.55rem;
       display: flex;
       align-items: center;
+      letter-spacing: -0.01em;
     }
     .principle-title.orange { color: var(--orange); }
+    .principle-title.purple { color: var(--purple); }
 
     .principle-summary {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.6;
       margin-left: 2.5rem;
     }
-
     .principle-icon { font-size: 1.5rem; margin-right: 0.75rem; }
 
-    /* Premium Bar Slide */
+    /* Premium Bar */
     .premium-bar-layout {
       display: flex;
       flex-direction: column;
@@ -296,7 +332,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .traits-section {
@@ -312,7 +348,7 @@
       gap: 0.75rem;
       font-size: 0.9rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.4;
     }
     .trait-icon { font-size: 1.25rem; }
@@ -371,7 +407,7 @@
       animation: fillLayer 0.8s ease-out forwards;
     }
 
-    .layer-teal { height: 33.33%; background: var(--teal); animation-delay: 0.25s; }
+    .layer-teal, .layer-green { height: 33.33%; background: var(--green); animation-delay: 0.25s; }
     .layer-orange { height: 33.33%; background: var(--orange); animation-delay: 0.85s; }
     .layer-purple { height: 33.33%; background: var(--purple); animation-delay: 1.45s; }
 
@@ -422,31 +458,23 @@
       font-size: 0.85rem;
       font-style: italic;
       font-weight: 300;
-      color: var(--gray);
-      max-width: 320px;
+      color: var(--muted);
+      max-width: 340px;
       line-height: 1.5;
     }
 
-    .premium-footer {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--gray);
-      margin-top: 2rem;
-      font-style: italic;
-    }
-
-    /* NEW: Value & Proofing slides (10-12) */
+    /* Slide 10+ components */
     .value-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
       width: 100%;
       max-width: 980px;
-      margin-top: 0.5rem;
+      margin-top: 0.35rem;
     }
 
     .value-card {
-      background: var(--background);
+      background: var(--bg);
       border: 1px solid rgba(0,0,0,0.04);
       border-radius: 14px;
       padding: 1.25rem 1.25rem;
@@ -468,7 +496,7 @@
     .value-card p {
       font-size: 0.95rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.55;
     }
 
@@ -483,14 +511,14 @@
       font-size: 0.8rem;
       padding: 0.35rem 0.55rem;
       border-radius: 999px;
-      background: rgba(20,184,166,0.10);
-      border: 1px solid rgba(20,184,166,0.18);
+      background: var(--green-10);
+      border: 1px solid var(--green-18);
       color: var(--ink);
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .pill.orange { background: rgba(249,115,22,0.10); border-color: rgba(249,115,22,0.18); }
-    .pill.purple { background: rgba(139,92,246,0.10); border-color: rgba(139,92,246,0.18); }
+    .pill.orange { background: var(--orange-10); border-color: var(--orange-18); }
+    .pill.purple { background: var(--purple-10); border-color: var(--purple-18); }
 
     .kpi-grid {
       width: 100%;
@@ -502,7 +530,7 @@
     }
 
     .kpi {
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1rem 1rem;
@@ -519,8 +547,8 @@
 
     .kpi .kpi-title {
       font-size: 0.9rem;
-      color: var(--gray);
-      font-weight: 500;
+      color: var(--muted);
+      font-weight: 650;
     }
 
     .kpi .kpi-icon { font-size: 1.1rem; }
@@ -536,11 +564,12 @@
     .kpi .kpi-desc {
       font-size: 0.9rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.45;
     }
 
-    .kpi .kpi-number.teal { color: var(--teal); }
+    .kpi .kpi-number.teal,
+    .kpi .kpi-number.green { color: var(--green); }
     .kpi .kpi-number.orange { color: var(--orange); }
     .kpi .kpi-number.purple { color: var(--purple); }
 
@@ -554,7 +583,7 @@
     }
 
     .step {
-      background: var(--background);
+      background: var(--bg);
       border: 1px solid rgba(0,0,0,0.04);
       border-radius: 14px;
       padding: 1.1rem 1.1rem;
@@ -577,10 +606,10 @@
 
     .step .step-tag {
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--gray);
+      color: var(--muted);
       padding: 0.25rem 0.5rem;
       border-radius: 999px;
       background: #ffffff;
@@ -591,10 +620,9 @@
       padding-left: 1.25rem;
       font-size: 0.92rem;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--muted);
       line-height: 1.65;
     }
-
     .step ul li { margin-bottom: 0.35rem; }
 
     /* Fullscreen mode */
@@ -628,7 +656,7 @@
     </nav>
 
     <div class="slides-container">
-      <!-- Slide 1: The Vision of Premium Support -->
+      <!-- Slide 1 -->
       <div class="slide active" data-slide="1">
         <div class="kicker">Premium Support</div>
         <div class="slide-number">1/12</div>
@@ -637,14 +665,14 @@
 
         <p class="anchor-statement">
           "Premium Support exists to provide <span class="highlight-purple">clear ownership</span> and
-          <span class="highlight-teal">proactive partnership</span> for our most important customers —
+          <span class="highlight-green">proactive partnership</span> for our most important customers —
           enabling <span class="highlight-orange">faster recovery</span> when work is disrupted,
-          <span class="highlight-teal">deeper value</span> from Cursor, and confidence that their
+          <span class="highlight-green">deeper value</span> from Cursor, and confidence that their
           <span class="highlight-purple">feedback drives improvement</span>."
         </p>
       </div>
 
-      <!-- Slide 2: Principles of Premium Support -->
+      <!-- Slide 2 -->
       <div class="slide" data-slide="2">
         <div class="kicker">Premium Support</div>
         <div class="slide-number">2/12</div>
@@ -664,7 +692,7 @@
         </div>
       </div>
 
-      <!-- Slide 3: Speed When Work Is Disrupted - Deep Dive -->
+      <!-- Slide 3 -->
       <div class="slide" data-slide="3">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">3/12</div>
@@ -676,7 +704,7 @@
         <div class="icon-cards">
           <div class="icon-card">
             <div class="icon-card-icon">🎯</div>
-            <div class="icon-card-text"><span class="highlight-teal">Customer-defined</span> urgency based on business impact</div>
+            <div class="icon-card-text"><span class="highlight-green">Customer-defined</span> urgency based on business impact</div>
           </div>
 
           <div class="icon-card">
@@ -691,7 +719,7 @@
 
           <div class="icon-card">
             <div class="icon-card-icon">🔧</div>
-            <div class="icon-card-text"><span class="highlight-teal">Live troubleshooting</span> to shorten time-to-recovery</div>
+            <div class="icon-card-text"><span class="highlight-green">Live troubleshooting</span> to shorten time-to-recovery</div>
           </div>
 
           <div class="icon-card">
@@ -706,7 +734,7 @@
         </div>
       </div>
 
-      <!-- Slide 4: What's Included - Speed -->
+      <!-- Slide 4 -->
       <div class="slide" data-slide="4">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">4/12</div>
@@ -759,19 +787,24 @@
         </div>
       </div>
 
-      <!-- Slide 5: Proactive Partnership - Deep Dive -->
+      <!-- Slide 5 (FIXED) -->
       <div class="slide" data-slide="5">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">5/12</div>
 
-        <h1 class="headline"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
+        <!-- smaller, tighter headline so it fits cleanly -->
+        <h1 class="headline tight"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
 
-        <p class="slide-summary">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
+        <!-- slightly tighter summary spacing to give the grid more breathing room -->
+        <p class="slide-summary" style="margin-bottom:1.15rem;">
+          Risk detection, unlock potential, actionable insights, and a credible feedback loop.
+        </p>
 
+        <!-- alignment fixes are in CSS: cards are equal height, top-aligned -->
         <div class="icon-cards">
           <div class="icon-card">
             <div class="icon-card-icon">🔍</div>
-            <div class="icon-card-text">Look for <span class="highlight-orange">risk signals</span> and <span class="highlight-teal">friction</span>, not just incoming tickets</div>
+            <div class="icon-card-text">Look for <span class="highlight-orange">risk signals</span> and <span class="highlight-green">friction</span>, not just incoming tickets</div>
           </div>
 
           <div class="icon-card">
@@ -781,12 +814,12 @@
 
           <div class="icon-card">
             <div class="icon-card-icon">📚</div>
-            <div class="icon-card-text">Seek opportunity to <span class="highlight-orange">deepen customer understanding</span> of the product</div>
+            <div class="icon-card-text">Seek opportunities to <span class="highlight-orange">deepen customer understanding</span> of the product</div>
           </div>
 
           <div class="icon-card">
             <div class="icon-card-icon">📣</div>
-            <div class="icon-card-text">Clear path for <span class="highlight-teal">customer feedback</span> to reach Product, Engineering, Leadership</div>
+            <div class="icon-card-text">Clear path for <span class="highlight-green">customer feedback</span> to reach Product, Engineering, Leadership</div>
           </div>
 
           <div class="icon-card">
@@ -801,7 +834,7 @@
         </div>
       </div>
 
-      <!-- Slide 6: What's Included - Proactive Partnership -->
+      <!-- Slide 6 -->
       <div class="slide" data-slide="6">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">6/12</div>
@@ -842,7 +875,7 @@
         </div>
       </div>
 
-      <!-- Slide 7: How It's Delivered -->
+      <!-- Slide 7 -->
       <div class="slide" data-slide="7">
         <div class="kicker">Operating Model</div>
         <div class="slide-number">7/12</div>
@@ -854,7 +887,7 @@
             <h3 class="section-title">Meet the Customer Where They Are</h3>
             <ul class="bullet-list">
               <li>Dedicated shared <span class="highlight-orange">Slack channel</span></li>
-              <li><span class="highlight-teal">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
+              <li><span class="highlight-green">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
               <li>Live chat / async support when it best <span class="highlight-purple">reduces friction</span></li>
             </ul>
           </div>
@@ -863,14 +896,14 @@
             <h3 class="section-title">Holistic Ownership Across the Company</h3>
             <ul class="bullet-list">
               <li>Focus to build and test <span class="highlight-orange">AI solutions</span> to expedite resolution for Premium customers</li>
-              <li>Tight coordination across <span class="highlight-teal">Support, Account teams, Product, Engineering, Leadership</span></li>
+              <li>Tight coordination across <span class="highlight-green">Support, Account teams, Product, Engineering, Leadership</span></li>
               <li>Feedback is <span class="highlight-purple">captured, routed, and reflected back</span> visibly</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Slide 8: Staffing Overview -->
+      <!-- Slide 8 -->
       <div class="slide" data-slide="8">
         <div class="kicker">Coverage</div>
         <div class="slide-number">8/12</div>
@@ -880,7 +913,7 @@
         <div class="icon-cards">
           <div class="icon-card">
             <div class="icon-card-icon">🤖</div>
-            <div class="icon-card-text"><span class="highlight-teal">AI layer</span> to enhance speed and proactivity</div>
+            <div class="icon-card-text"><span class="highlight-green">AI layer</span> to enhance speed and proactivity</div>
           </div>
 
           <div class="icon-card">
@@ -895,7 +928,7 @@
 
           <div class="icon-card">
             <div class="icon-card-icon">🌍</div>
-            <div class="icon-card-text"><span class="highlight-teal">Follow-the-sun</span> model to ensure 24/7/365 availability for customer-defined P0</div>
+            <div class="icon-card-text"><span class="highlight-green">Follow-the-sun</span> model to ensure 24/7/365 availability for customer-defined P0</div>
           </div>
 
           <div class="icon-card">
@@ -910,7 +943,7 @@
         </div>
       </div>
 
-      <!-- Slide 9: The Premium Bar -->
+      <!-- Slide 9 -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
         <div class="slide-number">9/12</div>
@@ -923,7 +956,7 @@
               <div class="glass-top"></div>
               <div class="glass-body">
                 <div class="liquid-container">
-                  <div class="liquid-layer layer-teal"></div>
+                  <div class="liquid-layer layer-green"></div>
                   <div class="liquid-layer layer-orange"></div>
                   <div class="liquid-layer layer-purple"></div>
                 </div>
@@ -942,7 +975,7 @@
           <div class="traits-section">
             <div class="trait-item">
               <span class="trait-icon">🧠</span>
-              <span class="trait-text"><span class="highlight-teal">Technical judgment</span> — knowing when and how to apply it</span>
+              <span class="trait-text"><span class="highlight-green">Technical judgment</span> — knowing when and how to apply it</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">🏢</span>
@@ -954,7 +987,7 @@
             </div>
             <div class="trait-item">
               <span class="trait-icon">💬</span>
-              <span class="trait-text"><span class="highlight-teal">Communication at all levels</span> — engineers to executives</span>
+              <span class="trait-text"><span class="highlight-green">Communication at all levels</span> — engineers to executives</span>
             </div>
             <div class="trait-item">
               <span class="trait-icon">🧘</span>
@@ -966,11 +999,9 @@
             </div>
           </div>
         </div>
-
-        <p class="premium-footer" style="display:none;">Premium eligibility is earned, certified, and re-certified.</p>
       </div>
 
-      <!-- Slide 10: Proving Value (NEW) -->
+      <!-- Slide 10 -->
       <div class="slide" data-slide="10">
         <div class="kicker">Proving Value</div>
         <div class="slide-number">10/12</div>
@@ -1021,7 +1052,7 @@
         </div>
       </div>
 
-      <!-- Slide 11: Success Metrics (NEW) -->
+      <!-- Slide 11 -->
       <div class="slide" data-slide="11">
         <div class="kicker">Success Metrics</div>
         <div class="slide-number">11/12</div>
@@ -1035,7 +1066,7 @@
               <div class="kpi-title">Time to Triage (P0)</div>
               <div class="kpi-icon">⏱️</div>
             </div>
-            <div class="kpi-number teal">↓</div>
+            <div class="kpi-number green">↓</div>
             <div class="kpi-desc">How quickly we acknowledge, engage, and start meaningful troubleshooting.</div>
           </div>
 
@@ -1062,7 +1093,7 @@
               <div class="kpi-title">Proactive Signals Caught</div>
               <div class="kpi-icon">🔍</div>
             </div>
-            <div class="kpi-number teal">↑</div>
+            <div class="kpi-number green">↑</div>
             <div class="kpi-desc">Risk indicators detected before customers are blocked (SSO/API/errors).</div>
           </div>
 
@@ -1086,7 +1117,7 @@
         </div>
       </div>
 
-      <!-- Slide 12: Rollout Plan (NEW) -->
+      <!-- Slide 12 -->
       <div class="slide" data-slide="12">
         <div class="kicker">Rollout</div>
         <div class="slide-number">12/12</div>
@@ -1188,4 +1219,3 @@
   </script>
 </body>
 </html>
-
