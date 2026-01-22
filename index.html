@@ -109,8 +109,9 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 4rem 6rem;
+            padding-top: 5rem;
             position: relative;
         }
 
@@ -156,6 +157,375 @@
             width: 100%;
             max-width: 800px;
             text-align: left;
+        }
+
+        .two-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .two-sections .content-section {
+            max-width: 100%;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-number {
+            font-family: 'Cursor Gothic', 'Fira Code', monospace;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number.teal { color: var(--teal); }
+        .stat-number.orange { color: var(--orange); }
+        .stat-number.purple { color: var(--purple); }
+
+        .stat-label {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .capacity-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .capacity-item {
+            text-align: center;
+        }
+
+        .capacity-percent {
+            font-family: 'Cursor Gothic', 'Fira Code', monospace;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .capacity-percent.teal { color: var(--teal); }
+        .capacity-percent.orange { color: var(--orange); }
+        .capacity-percent.purple { color: var(--purple); }
+
+        .capacity-label {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--gray);
+            max-width: 180px;
+        }
+
+        .icon-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .icon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.25rem 1rem;
+            background: var(--background);
+            border-radius: 12px;
+            width: calc(33% - 1rem);
+            min-width: 200px;
+        }
+
+        .icon-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .icon-card-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .icon-card-text .highlight-teal {
+            color: var(--teal);
+            font-weight: 400;
+        }
+
+        .icon-card-text .highlight-orange {
+            color: var(--orange);
+            font-weight: 400;
+        }
+
+        .icon-card-text .highlight-purple {
+            color: var(--purple);
+            font-weight: 400;
+        }
+
+        /* Premium Bar Slide */
+        .premium-bar-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .cocktail-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .traits-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 3rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .trait-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--gray);
+        }
+
+        .trait-icon {
+            font-size: 1.25rem;
+        }
+
+        .trait-text .highlight-teal {
+            color: var(--teal);
+            font-weight: 400;
+        }
+
+        .trait-text .highlight-orange {
+            color: var(--orange);
+            font-weight: 400;
+        }
+
+        .trait-text .highlight-purple {
+            color: var(--purple);
+            font-weight: 400;
+        }
+
+        .cocktail-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cocktail-glass {
+            position: relative;
+            width: 120px;
+            height: 180px;
+            margin-bottom: 1rem;
+        }
+
+        .glass-body {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 120px;
+            border: 4px solid #1a1a1a;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            background: rgba(255,255,255,0.3);
+            overflow: hidden;
+        }
+
+        .glass-top {
+            position: absolute;
+            bottom: 156px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 88px;
+            height: 4px;
+            background: #1a1a1a;
+            border-radius: 2px;
+        }
+
+        .glass-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 40px;
+            border-bottom: 4px solid #1a1a1a;
+            border-left: 4px solid #1a1a1a;
+            border-right: 4px solid #1a1a1a;
+            border-radius: 0 0 8px 8px;
+            background: transparent;
+        }
+
+        .liquid-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .liquid-layer {
+            width: 100%;
+            flex-shrink: 0;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            animation: fillLayer 0.8s ease-out forwards;
+        }
+
+        .layer-teal {
+            height: 33.33%;
+            background: var(--teal);
+            animation-delay: 0.3s;
+        }
+
+        .layer-orange {
+            height: 33.33%;
+            background: var(--orange);
+            animation-delay: 0.9s;
+        }
+
+        .layer-purple {
+            height: 33.33%;
+            background: var(--purple);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fillLayer {
+            0% {
+                transform: scaleY(0);
+            }
+            100% {
+                transform: scaleY(1);
+            }
+        }
+
+        .straw {
+            position: absolute;
+            bottom: 60px;
+            left: 70px;
+            width: 8px;
+            height: 140px;
+            background: repeating-linear-gradient(
+                0deg,
+                #1a1a1a,
+                #1a1a1a 10px,
+                #fff 10px,
+                #fff 20px
+            );
+            border-radius: 4px;
+            transform: rotate(12deg);
+            transform-origin: bottom center;
+            z-index: 10;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .b1 {
+            width: 6px;
+            height: 6px;
+            left: 35px;
+            bottom: 70px;
+            animation-delay: 0s;
+        }
+
+        .b2 {
+            width: 4px;
+            height: 4px;
+            left: 55px;
+            bottom: 90px;
+            animation-delay: 1s;
+        }
+
+        .b3 {
+            width: 5px;
+            height: 5px;
+            left: 45px;
+            bottom: 110px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) translateX(5px);
+                opacity: 0.3;
+            }
+        }
+
+        .cocktail-name {
+            font-family: 'Cursor Gothic', 'Fira Code', monospace;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .cocktail-recipe {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.85rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gray);
+            max-width: 280px;
+            line-height: 1.5;
+        }
+
+        .premium-footer {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--gray);
+            margin-top: 2rem;
+            font-style: italic;
         }
 
         .section-title {
@@ -209,7 +579,7 @@
             text-align: left;
             font-size: 0.9rem;
             font-weight: 500;
-            color: var(--gray);
+            color: var(--teal);
             padding: 0.75rem 1rem;
             border-bottom: 1px solid #e5e5e5;
         }
@@ -316,7 +686,7 @@
                 <li><a href="#" data-goto="5"><span class="chapter-icon">🤝</span>Proactive Partnership</a></li>
                 <li><a href="#" data-goto="6"><span class="chapter-icon">🤝</span>What's Included</a></li>
                 <li><a href="#" data-goto="7">How It's Delivered</a></li>
-                <li><a href="#" data-goto="8">AI & Automation</a></li>
+                <li><a href="#" data-goto="8">Staffing</a></li>
                 <li><a href="#" data-goto="9">The Premium Bar</a></li>
                 <li><a href="#" data-goto="10">Proving Value</a></li>
             </ul>
@@ -327,7 +697,7 @@
     <div class="slide active" data-slide="1">
         <div class="slide-number">1/10</div>
         
-        <h1 class="headline">The Vision of Premium Support</h1>
+        <h1 class="headline">The Vision</h1>
         
         <p class="anchor-statement">
             "Premium Support exists to provide <span class="highlight-purple">clear ownership</span> and 
@@ -342,7 +712,7 @@
     <div class="slide" data-slide="2">
         <div class="slide-number">2/10</div>
         
-        <h1 class="headline">Principles of Premium Support</h1>
+        <h1 class="headline">The Principles</h1>
         
         <div class="principles">
             <div class="principle">
@@ -352,7 +722,7 @@
             
             <div class="principle">
                 <h2 class="principle-title orange"><span class="principle-icon emoji">🤝</span> Proactive Partnership, Not Reactive Support</h2>
-                <p class="principle-summary">Risk detection, enablement, actionable insights, and a credible feedback loop.</p>
+                <p class="principle-summary">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
             </div>
         </div>
     </div>
@@ -365,15 +735,31 @@
         
         <p class="slide-summary">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
         
-        <div class="content-section">
-            <h3 class="section-title">Principle concepts:</h3>
-            <ul class="bullet-list">
-                <li>Customers define <span class="highlight-teal">urgency</span> based on their <span class="highlight-orange">business impact</span>, not internal severity labels</li>
-                <li><span class="highlight-purple">24/7 availability</span> when customers are blocked from working</li>
-                <li><span class="highlight-teal">Reduced friction</span>: no queues, no handoffs, no severity debates</li>
-                <li><span class="highlight-orange">Live troubleshooting</span> used deliberately to shorten time-to-recovery</li>
-                <li>Targeted <span class="highlight-purple">post-incident analysis (RCA)</span> for customer-impacting incidents, focused on root cause and prevention</li>
-            </ul>
+        <div class="icon-cards">
+            <div class="icon-card">
+                <div class="icon-card-icon">🎯</div>
+                <div class="icon-card-text"><span class="highlight-teal">Customer-defined</span> urgency based on business impact</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">🕐</div>
+                <div class="icon-card-text"><span class="highlight-orange">24/7 availability</span> when blocked from working</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">⚡</div>
+                <div class="icon-card-text"><span class="highlight-purple">No queues</span>, no handoffs, no debates</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">🔧</div>
+                <div class="icon-card-text"><span class="highlight-teal">Live troubleshooting</span> to shorten time-to-recovery</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">📋</div>
+                <div class="icon-card-text">Targeted <span class="highlight-orange">RCA</span> focused on root cause & prevention</div>
+            </div>
         </div>
     </div>
 
@@ -405,20 +791,20 @@
                         <td>Expedited SLAs aligned to customer impact</td>
                     </tr>
                     <tr>
-                        <td class="area-label">Human Access</td>
-                        <td>Priority access to senior support engineers</td>
+                        <td class="area-label">Expert Access</td>
+                        <td>Priority access to Cursor's senior support team</td>
                     </tr>
                     <tr>
                         <td class="area-label">Troubleshooting</td>
-                        <td>Slack Huddles / live troubleshooting when it reduces time-to-recovery</td>
+                        <td>Live troubleshooting when it reduces time-to-recovery for high impacting issues</td>
                     </tr>
                     <tr>
-                        <td class="area-label">Issue Communication</td>
+                        <td class="area-label">Incident Communication</td>
                         <td>Proactive, customer-specific issue communication</td>
                     </tr>
                     <tr>
                         <td class="area-label">Named Support Lead</td>
-                        <td>Named team member responsible for support consistency and escalations</td>
+                        <td>Support Lead to oversee support health and act as escalation support</td>
                     </tr>
                     <tr>
                         <td class="area-label">Post-Issue Review</td>
@@ -428,11 +814,197 @@
             </table>
         </div>
     </div>
+
+    <!-- Slide 5: Proactive Partnership - Deep Dive -->
+    <div class="slide" data-slide="5">
+        <div class="slide-number">5/10</div>
+        
+        <h1 class="headline"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
+        
+        <p class="slide-summary">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
+        
+        <div class="icon-cards">
+            <div class="icon-card">
+                <div class="icon-card-icon">🔍</div>
+                <div class="icon-card-text">Look for <span class="highlight-orange">risk signals</span> and <span class="highlight-teal">friction</span>, not just incoming tickets</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">💡</div>
+                <div class="icon-card-text">Proactively share <span class="highlight-purple">insights, patterns, and recommendations</span></div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">📚</div>
+                <div class="icon-card-text">Seek opportunity to <span class="highlight-orange">deepen customer understanding</span> of the product</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">📣</div>
+                <div class="icon-card-text">Clear path for <span class="highlight-teal">customer feedback</span> to reach Product, Engineering, Leadership</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: What's Included - Proactive Partnership -->
+    <div class="slide" data-slide="6">
+        <div class="slide-number">6/10</div>
+        
+        <h1 class="headline"><span class="emoji">🤝</span> What's Included</h1>
+        
+        <div class="table-container">
+            <table class="inclusion-table">
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>Included (What It Is)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="area-label">Risk Monitoring</td>
+                        <td>Proactive monitoring of defined risk signals (e.g. SSO, API failures)</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Proactive Outreach</td>
+                        <td>Proactive alerts when risk indicators appear, AI fix attempts alongside human support</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Support Insights</td>
+                        <td>Weekly & monthly support insights, highlighting trends from both in-channel and ticketed support</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Health Reviews</td>
+                        <td>Quarterly support health reviews with Sales + customer</td>
+                    </tr>
+                    <tr>
+                        <td class="area-label">Feedback Loop</td>
+                        <td>Structured feedback loop into Product, Engineering, Leadership</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Slide 7: How It's Delivered -->
+    <div class="slide" data-slide="7">
+        <div class="slide-number">7/10</div>
+        
+        <h1 class="headline">How It's Delivered</h1>
+        
+        <div class="two-sections">
+            <div class="content-section">
+                <h3 class="section-title">Meet the Customer Where They Are</h3>
+                <ul class="bullet-list">
+                    <li>Dedicated shared <span class="highlight-orange">Slack channel</span></li>
+                    <li><span class="highlight-teal">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
+                    <li>Live chat / async support when it best <span class="highlight-purple">reduces friction</span></li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Holistic Ownership Across the Company</h3>
+                <ul class="bullet-list">
+                    <li>Focus to build and test <span class="highlight-orange">AI solutions</span> to expedite resolution for Premium customers</li>
+                    <li>Tight coordination across <span class="highlight-teal">Support, Account teams, Product, Engineering, Leadership</span></li>
+                    <li>Feedback is <span class="highlight-purple">captured, routed, and reflected back</span> visibly</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Staffing Overview -->
+    <div class="slide" data-slide="8">
+        <div class="slide-number">8/10</div>
+        
+        <h1 class="headline">Staffing Overview</h1>
+        
+        <div class="icon-cards">
+            <div class="icon-card">
+                <div class="icon-card-icon">🤖</div>
+                <div class="icon-card-text"><span class="highlight-teal">AI layer</span> to enhance speed and proactivity</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">👥</div>
+                <div class="icon-card-text"><span class="highlight-orange">Pooled senior support team</span>, staffed to inbound volume not # of accounts</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">🎯</div>
+                <div class="icon-card-text"><span class="highlight-purple">Named Senior TSE</span> per account for consistency, continuity and escalation support</div>
+            </div>
+            
+            <div class="icon-card">
+                <div class="icon-card-icon">🌍</div>
+                <div class="icon-card-text"><span class="highlight-teal">Follow-the-sun</span> model to ensure 24/7/365 availability for customer-defined P0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: The Premium Bar -->
+    <div class="slide" data-slide="9">
+        <div class="slide-number">9/10</div>
+        
+        <h1 class="headline">The Premium Bar</h1>
+        
+        <div class="premium-bar-layout">
+            <div class="traits-section">
+                <div class="trait-item">
+                    <span class="trait-icon">🧠</span>
+                    <span class="trait-text"><span class="highlight-teal">Technical judgment</span> — knowing when and how to apply it</span>
+                </div>
+                <div class="trait-item">
+                    <span class="trait-icon">🏢</span>
+                    <span class="trait-text"><span class="highlight-orange">Enterprise mindset</span> — comfortable with ambiguity</span>
+                </div>
+                <div class="trait-item">
+                    <span class="trait-icon">💜</span>
+                    <span class="trait-text"><span class="highlight-purple">Customer obsession</span> — relentless focus on outcomes</span>
+                </div>
+                <div class="trait-item">
+                    <span class="trait-icon">💬</span>
+                    <span class="trait-text"><span class="highlight-teal">Communication at all levels</span> — engineers to executives</span>
+                </div>
+                <div class="trait-item">
+                    <span class="trait-icon">🧘</span>
+                    <span class="trait-text"><span class="highlight-orange">Emotional intelligence</span> — composure and empathy</span>
+                </div>
+                <div class="trait-item">
+                    <span class="trait-icon">🤝</span>
+                    <span class="trait-text"><span class="highlight-purple">Accountability without ego</span> — owns it, fixes it</span>
+                </div>
+            </div>
+            
+            <div class="cocktail-section">
+                <div class="cocktail-glass">
+                    <div class="glass-top"></div>
+                    <div class="glass-body">
+                        <div class="liquid-container">
+                            <div class="liquid-layer layer-teal"></div>
+                            <div class="liquid-layer layer-orange"></div>
+                            <div class="liquid-layer layer-purple"></div>
+                        </div>
+                    </div>
+                    <div class="glass-base"></div>
+                    <div class="straw"></div>
+                    <div class="bubble b1"></div>
+                    <div class="bubble b2"></div>
+                    <div class="bubble b3"></div>
+                </div>
+                
+                <div class="cocktail-name">The Premium Support Punch</div>
+                <p class="cocktail-recipe">"Hospitality mindset, mixed with technical expertise and a garnish of impressive communication skills, served in a tall glass of relentless improvement."</p>
+            </div>
+        </div>
+        
+        <p class="premium-footer" style="display:none;">Premium eligibility is earned, certified, and re-certified.</p>
+    </div>
         </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 4;
+        const totalSlides = 9;
 
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
