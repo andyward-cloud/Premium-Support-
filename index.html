@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Premium Support Presentation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,28 +12,28 @@
 
   <style>
     :root {
-      /* Slide 10 palette as the single source of truth */
+      /* Slide 10 palette (single source of truth) */
       --green: #14B8A6;
       --orange: #F97316;
       --purple: #8B5CF6;
 
-      /* Neutrals */
       --bg: #FAF9F7;
       --surface: #FFFFFF;
       --ink: #1a1a1a;
       --muted: #6B7280;
-      --border: #e9e7e4;
+      --border: #E7E5E3;
 
-      /* Accent tints (pill fill + border) */
-      --green-10: rgba(20,184,166,0.10);
-      --green-18: rgba(20,184,166,0.18);
-      --green-25: rgba(20,184,166,0.25);
+      --g10: rgba(20,184,166,0.10);
+      --g18: rgba(20,184,166,0.18);
+      --g28: rgba(20,184,166,0.28);
 
-      --orange-10: rgba(249,115,22,0.10);
-      --orange-18: rgba(249,115,22,0.18);
+      --o10: rgba(249,115,22,0.10);
+      --o18: rgba(249,115,22,0.18);
+      --o28: rgba(249,115,22,0.28);
 
-      --purple-10: rgba(139,92,246,0.10);
-      --purple-18: rgba(139,92,246,0.18);
+      --p10: rgba(139,92,246,0.10);
+      --p18: rgba(139,92,246,0.18);
+      --p28: rgba(139,92,246,0.28);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -83,7 +83,7 @@
     .chapter-nav a {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       padding: 0.55rem 0.75rem;
       font-size: 0.92rem;
       font-weight: 450;
@@ -94,16 +94,14 @@
       border: 1px solid transparent;
     }
 
-    .chapter-nav a:hover {
-      background-color: #f0efec;
-      color: var(--ink);
-    }
+    .chapter-nav a:hover { background-color: #f0efec; color: var(--ink); }
 
     .chapter-nav a.active {
-      background: var(--green-10);
+      background: transparent;
       color: var(--ink);
-      font-weight: 600;
-      border: 1px solid var(--green-25);
+      font-weight: 650;
+      border: 1px solid var(--g28);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
     }
 
     .chapter-nav .chapter-icon { width: 1.2rem; display: inline-flex; justify-content: center; }
@@ -123,74 +121,66 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 3rem 6rem;
+      padding: 2.9rem 5.3rem; /* tightened + consistent */
       position: relative;
       overflow: hidden;
     }
 
     .slide.active { display: flex; }
 
-    /* Tighter canvas for dense grid slides */
-    .slide.tight-canvas {
-      padding: 2.6rem 5.25rem;
-    }
-
     .slide-number {
       position: absolute;
-      top: 1.3rem;
-      right: 1.8rem;
-      font-size: 0.875rem;
+      top: 1.25rem;
+      right: 1.7rem;
+      font-size: 0.85rem;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 650;
     }
 
     .kicker {
       position: absolute;
-      top: 1.3rem;
-      left: 1.8rem;
-      font-size: 0.75rem;
+      top: 1.25rem;
+      left: 1.7rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 650;
     }
 
-    /* Headline system */
+    /* TYPO */
     .headline {
       font-family: 'Cursor Gothic', 'Fira Code', monospace;
-      font-size: clamp(2.05rem, 3.2vw, 2.65rem);
+      font-size: clamp(2.0rem, 3.0vw, 2.55rem);
       font-weight: 400;
       color: var(--ink);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.05rem;
       text-align: center;
       letter-spacing: -0.02em;
       line-height: 1.08;
     }
 
-    /* For long headlines */
     .headline.tight {
-      font-size: clamp(1.70rem, 2.55vw, 2.10rem);
+      font-size: clamp(1.68rem, 2.45vw, 2.06rem);
       line-height: 1.10;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
     }
 
-    .emoji { font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
+    .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
 
     .slide-summary {
-      font-size: 1.12rem;
+      font-size: 1.08rem;
       font-weight: 300;
       color: var(--muted);
       text-align: center;
-      margin-bottom: 1.6rem;
-      max-width: 920px;
+      margin-bottom: 1.25rem;
+      max-width: 940px;
       line-height: 1.55;
     }
 
-    .slide-summary.tight {
-      margin-bottom: 1.05rem;
-    }
+    .slide-summary.tight { margin-bottom: 0.9rem; }
 
-    /* === Pill Highlights (inline) === */
+    /* PILLS (inline + headings) */
     .pill-inline{
       display: inline-flex;
       align-items: center;
@@ -198,225 +188,276 @@
       padding: 0.18rem 0.55rem;
       border-radius: 999px;
       font-style: normal;
-      font-weight: 600;
+      font-weight: 650;
       font-size: 0.95em;
       line-height: 1.2;
       vertical-align: baseline;
       white-space: nowrap;
+      background: transparent;
+      border: 1px solid var(--border);
     }
+    .pill-inline.sm{ padding: 0.14rem 0.48rem; font-size: 0.90em; }
 
-    .pill-inline.sm{
-      padding: 0.14rem 0.48rem;
-      font-size: 0.90em;
-    }
+    .pill-inline.green { border-color: var(--g28); }
+    .pill-inline.orange{ border-color: var(--o28); }
+    .pill-inline.purple{ border-color: var(--p28); }
 
-    .pill-inline.green{
-      background: var(--green-10);
-      border: 1px solid var(--green-18);
+    .pill-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.38rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-family: 'Cursor Gothic', 'Fira Code', monospace;
+      font-size: 1.05rem;
+      font-weight: 400;
       color: var(--ink);
+      margin-bottom: 0.85rem;
+      background: transparent;
     }
-    .pill-inline.orange{
-      background: var(--orange-10);
-      border: 1px solid var(--orange-18);
-      color: var(--ink);
-    }
-    .pill-inline.purple{
-      background: var(--purple-10);
-      border: 1px solid var(--purple-18);
-      color: var(--ink);
+    .pill-title.green { border-color: var(--g28); }
+    .pill-title.orange { border-color: var(--o28); }
+    .pill-title.purple { border-color: var(--p28); }
+
+    /* VISION */
+    .anchor-statement {
+      font-size: 1.32rem;
+      font-style: italic;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.78;
+      max-width: 980px;
+      font-weight: 300;
     }
 
-    .anchor-statement .pill-inline{
-      transform: translateY(-0.02em);
-      margin: 0 0.05rem;
+    /* OUTLINED CARD SYSTEM (replaces filled boxes everywhere) */
+    .card-grid {
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      gap: 1.05rem;
     }
+    .card-grid.two { grid-template-columns: 1fr 1fr; }
+    .card-grid.three { grid-template-columns: repeat(3, 1fr); }
 
-    /* Two-section content */
-    .content-section { width: 100%; max-width: 900px; text-align: left; }
-
-    .two-sections {
+    .o-card{
+      background: transparent;                 /* <-- no fill */
+      border-radius: 14px;
+      border: 1px solid var(--border);         /* base outline */
+      padding: 1.05rem 1.05rem;                /* tighter */
+      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      justify-content: flex-start;
+      min-height: 0;
+    }
+    .o-card.center { text-align: center; align-items: center; }
+    .o-card.accent-green{ border-color: var(--g28); }
+    .o-card.accent-orange{ border-color: var(--o28); }
+    .o-card.accent-purple{ border-color: var(--p28); }
+
+    .o-icon{
+      font-size: 1.75rem;                      /* tighter */
+      margin-bottom: 0.45rem;
+      line-height: 1;
+    }
+
+    .o-text{
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .o-title{
+      font-family: 'Cursor Gothic', 'Fira Code', monospace;
+      font-size: 1.02rem;
+      font-weight: 400;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Two-section */
+    .two-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
       width: 100%;
-      max-width: 850px;
-      margin-top: 0.6rem;
+      max-width: 1040px;
+      margin-top: 0.4rem;
     }
 
     .section-title {
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1.02rem;
+      font-weight: 650;
       color: var(--ink);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
       letter-spacing: -0.01em;
     }
 
     .bullet-list {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 300;
       color: var(--muted);
-      line-height: 1.8;
-      padding-left: 1.5rem;
+      line-height: 1.75;
+      padding-left: 1.2rem;
     }
-
-    .bullet-list li { margin-bottom: 0.5rem; }
+    .bullet-list li { margin-bottom: 0.42rem; }
 
     /* Tables */
-    .table-container { width: 100%; max-width: 980px; margin-top: 1.1rem; }
+    .table-container { width: 100%; max-width: 1040px; margin-top: 0.5rem; }
+
+    .table-header-row{
+      width: 100%;
+      max-width: 1040px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
     .inclusion-table { width: 100%; border-collapse: collapse; }
     .inclusion-table thead th {
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 700;
       color: var(--green);
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #e7e7e7;
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid #ecebea;
     }
     .inclusion-table tbody td {
-      padding: 0.75rem 1rem;
-      font-size: 0.95rem;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.93rem;
       font-weight: 300;
       color: var(--muted);
-      border-bottom: 1px solid #f1f1f1;
+      border-bottom: 1px solid #f2f1ef;
       vertical-align: top;
       line-height: 1.45;
     }
     .inclusion-table .area-label {
       font-weight: 650;
       color: var(--ink);
-      width: 220px;
-    }
-
-    /* Vision quote */
-    .anchor-statement {
-      font-size: 1.35rem;
-      font-style: italic;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.8;
-      max-width: 980px;
-      margin-bottom: 0;
-      font-weight: 300;
-    }
-
-    /* Icon cards */
-    .icon-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.1rem;
-      width: 100%;
-      max-width: 980px;
-    }
-
-    .icon-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      padding: 1.15rem 1.05rem;
-      background: var(--bg);
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .icon-card-icon { font-size: 1.95rem; margin-bottom: 0.55rem; }
-    .icon-card-text {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.5;
-      max-width: 22rem;
-    }
-
-    /* Compact grid for Slides 3 & 5 */
-    .icon-cards.compact {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
-      max-width: 1040px;
-    }
-    .icon-cards.compact .icon-card {
-      padding: 0.95rem 0.9rem;
-      border-radius: 13px;
-    }
-    .icon-cards.compact .icon-card-icon {
-      font-size: 1.75rem;
-      margin-bottom: 0.45rem;
-    }
-    .icon-cards.compact .icon-card-text {
-      font-size: 0.92rem;
-      line-height: 1.45;
-      max-width: 18rem;
+      width: 240px;
     }
 
     /* Principles */
-    .principles {
-      display: flex;
-      flex-direction: column;
-      gap: 2.2rem;
-      width: 100%;
-      max-width: 860px;
-      margin-top: 0.9rem;
-    }
-
-    .principle { text-align: left; }
-
-    .principle-title {
-      font-size: 1.25rem;
-      font-weight: 650;
-      color: var(--green);
-      margin-bottom: 0.55rem;
-      display: flex;
-      align-items: center;
-      letter-spacing: -0.01em;
-    }
-    .principle-title.orange { color: var(--orange); }
-
-    .principle-summary {
-      font-size: 1.08rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-left: 2.5rem;
-    }
-    .principle-icon { font-size: 1.5rem; margin-right: 0.75rem; }
-
-    /* Premium Bar */
-    .premium-bar-layout {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .principles-grid{
       width: 100%;
       max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-top: 0.35rem;
     }
 
-    .cocktail-section {
+    /* Pricing slide */
+    .pricing-callout{
+      width: 100%;
+      max-width: 1040px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.95rem 1.1rem;
+      text-align: center;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 1.03rem;
+      line-height: 1.55;
+      margin: 0.15rem 0 0.95rem;
+      background: transparent;
+    }
+
+    .pricing-layout{
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      align-items: stretch;
+    }
+
+    .pricing-bullets{
+      margin-top: 0.15rem;
+      padding-left: 1.1rem;
+      font-size: 0.98rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .pricing-bullets li{ margin-bottom: 0.42rem; }
+
+    /* Premium Bar (Slide 9): left drink, right copy+traits */
+    .premium-bar-layout {
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.25fr;
+      gap: 2.25rem;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .cocktail-left{
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      margin-bottom: 1.8rem;
-    }
-
-    .traits-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.1rem 1.5rem;
-      width: 100%;
-    }
-
-    .trait-item {
-      display: flex;
-      align-items: center;
       gap: 0.75rem;
-      font-size: 0.9rem;
+    }
+
+    .bar-right{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.05rem;
+      align-items: flex-start;
+    }
+
+    .bar-title{
+      font-family: 'Cursor Gothic','Fira Code',monospace;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+
+    .bar-recipe{
+      font-size: 0.98rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 560px;
+    }
+
+    .traits-grid{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 0.85rem;
+      margin-top: 0.15rem;
+    }
+
+    .trait-item{
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.93rem;
       font-weight: 300;
       color: var(--muted);
       line-height: 1.4;
+      padding: 0.6rem 0.7rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: transparent;
     }
-    .trait-icon { font-size: 1.25rem; }
 
-    .cocktail-glass { position: relative; width: 120px; height: 180px; margin-bottom: 1rem; }
+    .trait-icon { font-size: 1.1rem; line-height: 1; margin-top: 0.12rem; }
+
+    /* Animated drink (unchanged, just palette vars swapped) */
+    .cocktail-glass { position: relative; width: 120px; height: 180px; }
     .glass-body {
       position: absolute;
       bottom: 40px;
@@ -427,7 +468,7 @@
       border: 4px solid var(--ink);
       border-top: none;
       border-radius: 0 0 15px 15px;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.25);
       overflow: hidden;
     }
     .glass-top {
@@ -461,7 +502,6 @@
       display: flex;
       flex-direction: column-reverse;
     }
-
     .liquid-layer {
       width: 100%;
       flex-shrink: 0;
@@ -469,8 +509,7 @@
       transform-origin: bottom;
       animation: fillLayer 0.8s ease-out forwards;
     }
-
-    .layer-green { height: 33.33%; background: var(--green); animation-delay: 0.25s; }
+    .layer-green  { height: 33.33%; background: var(--green);  animation-delay: 0.25s; }
     .layer-orange { height: 33.33%; background: var(--orange); animation-delay: 0.85s; }
     .layer-purple { height: 33.33%; background: var(--purple); animation-delay: 1.45s; }
 
@@ -499,7 +538,6 @@
       border-radius: 50%;
       animation: float 3s ease-in-out infinite;
     }
-
     .b1 { width: 6px; height: 6px; left: 35px; bottom: 70px; animation-delay: 0s; }
     .b2 { width: 4px; height: 4px; left: 55px; bottom: 90px; animation-delay: 1s; }
     .b3 { width: 5px; height: 5px; left: 45px; bottom: 110px; animation-delay: 2s; }
@@ -509,138 +547,7 @@
       50% { transform: translateY(-20px) translateX(5px); opacity: 0.3; }
     }
 
-    .cocktail-name {
-      font-family: 'Cursor Gothic','Fira Code',monospace;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
-    }
-
-    .cocktail-recipe {
-      font-size: 0.85rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 340px;
-      line-height: 1.5;
-    }
-
-    /* Value / Metrics / Rollout cards */
-    .value-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      width: 100%;
-      max-width: 980px;
-      margin-top: 0.35rem;
-    }
-
-    .value-card {
-      background: var(--bg);
-      border: 1px solid rgba(0,0,0,0.04);
-      border-radius: 14px;
-      padding: 1.25rem 1.25rem;
-      text-align: left;
-    }
-
-    .value-card h3 {
-      font-family: 'Cursor Gothic','Fira Code',monospace;
-      font-size: 1.05rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .value-card p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .pill-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.8rem;
-    }
-
-    .pill {
-      font-size: 0.8rem;
-      padding: 0.35rem 0.55rem;
-      border-radius: 999px;
-      background: var(--green-10);
-      border: 1px solid var(--green-18);
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .pill.orange { background: var(--orange-10); border-color: var(--orange-18); }
-    .pill.purple { background: var(--purple-10); border-color: var(--purple-18); }
-
-    /* Pricing slide helpers */
-    .pricing-layout{
-      width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 1.25rem;
-      align-items: stretch;
-      margin-top: 0.75rem;
-    }
-
-    .pricing-card{
-      background: var(--bg);
-      border: 1px solid rgba(0,0,0,0.04);
-      border-radius: 14px;
-      padding: 1.25rem 1.25rem;
-      text-align: left;
-    }
-
-    .pricing-card h3{
-      font-family: 'Cursor Gothic','Fira Code',monospace;
-      font-size: 1.05rem;
-      font-weight: 400;
-      margin-bottom: 0.65rem;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .pricing-bullets{
-      margin-top: 0.1rem;
-      padding-left: 1.2rem;
-      font-size: 1.0rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .pricing-bullets li{ margin-bottom: 0.45rem; }
-
-    .pricing-callout{
-      width: 100%;
-      max-width: 980px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.05rem 1.25rem;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.04);
-      text-align: center;
-      color: var(--muted);
-      font-style: italic;
-      font-size: 1.05rem;
-      line-height: 1.55;
-      margin: 0.15rem 0 0.75rem;
-    }
-
-    /* Fullscreen mode */
+    /* Fullscreen */
     body:fullscreen .slide {
       max-width: 100%;
       height: 100vh;
@@ -649,12 +556,14 @@
     }
 
     @media (max-width: 1100px) {
-      .icon-cards.compact { grid-template-columns: 1fr 1fr; }
-      .slide { padding: 2.6rem 3.2rem; }
-      .slide.tight-canvas { padding: 2.4rem 3.2rem; }
+      .two-sections { grid-template-columns: 1fr; }
+      .card-grid.three { grid-template-columns: 1fr 1fr; }
+      .pricing-layout { grid-template-columns: 1fr; }
+      .premium-bar-layout { grid-template-columns: 1fr; gap: 1.4rem; }
+      .traits-grid { grid-template-columns: 1fr; }
+      .slide { padding: 2.4rem 3.1rem; }
       .chapter-nav { position: static; }
       body { padding: 1rem; }
-      .pricing-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -672,19 +581,17 @@
         <li><a href="#" data-goto="6"><span class="chapter-icon">🤝</span>What's Included</a></li>
         <li><a href="#" data-goto="7"><span class="chapter-icon">🧩</span>Delivery</a></li>
         <li><a href="#" data-goto="8"><span class="chapter-icon">👥</span>Staffing</a></li>
-        <li><a href="#" data-goto="9"><span class="chapter-icon">🍸</span>Premium Bar</a></li>
+        <li><a href="#" data-goto="9"><span class="chapter-icon">🍸</span>The Premium Bar</a></li>
         <li><a href="#" data-goto="10"><span class="chapter-icon">💸</span>Pricing</a></li>
-        <li><a href="#" data-goto="11"><span class="chapter-icon">📈</span>Internal Value</a></li>
-        <li><a href="#" data-goto="12"><span class="chapter-icon">🧪</span>Success Metrics</a></li>
-        <li><a href="#" data-goto="13"><span class="chapter-icon">🚀</span>Rollout</a></li>
+        <li><a href="#" data-goto="11"><span class="chapter-icon">📈</span>Value</a></li>
       </ul>
     </nav>
 
     <div class="slides-container">
-      <!-- Slide 1 -->
+      <!-- Slide 1: Vision -->
       <div class="slide active" data-slide="1">
         <div class="kicker">Premium Support</div>
-        <div class="slide-number">1/13</div>
+        <div class="slide-number">1/11</div>
 
         <h1 class="headline">The Vision</h1>
 
@@ -703,86 +610,78 @@
         </p>
       </div>
 
-      <!-- Slide 2 -->
+      <!-- Slide 2: Principles (headings as pills) -->
       <div class="slide" data-slide="2">
         <div class="kicker">Premium Support</div>
-        <div class="slide-number">2/13</div>
+        <div class="slide-number">2/11</div>
 
         <h1 class="headline">The Principles</h1>
+        <p class="slide-summary">Two promises: speed in disruption, and proactive partnership.</p>
 
-        <div class="principles">
-          <div class="principle">
-            <h2 class="principle-title"><span class="principle-icon emoji">⚡</span> Speed When Work Is Disrupted</h2>
-            <p class="principle-summary">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
+        <div class="principles-grid">
+          <div class="o-card accent-green">
+            <div class="pill-title green"><span class="emoji">⚡</span> Speed When Work Is Disrupted</div>
+            <div class="o-text">Fast recovery, customer-defined urgency, reduced friction — with clear learning after incidents.</div>
           </div>
 
-          <div class="principle">
-            <h2 class="principle-title orange"><span class="principle-icon emoji">🤝</span> Proactive Partnership, Not Reactive Support</h2>
-            <p class="principle-summary">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
+          <div class="o-card accent-orange">
+            <div class="pill-title orange"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</div>
+            <div class="o-text">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 3 -->
-      <div class="slide tight-canvas" data-slide="3">
+      <!-- Slide 3: Speed (outlined cards) -->
+      <div class="slide" data-slide="3">
         <div class="kicker">Principle 1</div>
-        <div class="slide-number">3/13</div>
+        <div class="slide-number">3/11</div>
 
         <h1 class="headline"><span class="emoji">⚡</span> Speed When Work Is Disrupted</h1>
-
         <p class="slide-summary tight">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
 
-        <div class="icon-cards compact">
-          <div class="icon-card">
-            <div class="icon-card-icon">🎯</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm green">Customer-defined</span> urgency based on business impact
-            </div>
+        <div class="card-grid three">
+          <div class="o-card accent-green center">
+            <div class="o-icon">🎯</div>
+            <div class="o-text"><span class="pill-inline sm green">Customer-defined</span> urgency based on business impact</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🕐</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm orange">24/7 availability</span> when blocked from working
-            </div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">🕐</div>
+            <div class="o-text"><span class="pill-inline sm orange">24/7</span> availability when blocked from working</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">⚡</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm purple">No queues</span>, no handoffs, no debates
-            </div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">⚡</div>
+            <div class="o-text"><span class="pill-inline sm purple">No queues</span>, no handoffs, no debates</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🔧</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm green">Live troubleshooting</span> to shorten time-to-recovery
-            </div>
+          <div class="o-card accent-green center">
+            <div class="o-icon">🔧</div>
+            <div class="o-text"><span class="pill-inline sm green">Live troubleshooting</span> to shorten time-to-recovery</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">📋</div>
-            <div class="icon-card-text">
-              Targeted <span class="pill-inline sm orange">RCA</span> focused on root cause & prevention
-            </div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">📋</div>
+            <div class="o-text">Targeted <span class="pill-inline sm orange">RCA</span> focused on root cause & prevention</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🧭</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm purple">One owner</span> coordinating across Cursor
-            </div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">🧭</div>
+            <div class="o-text"><span class="pill-inline sm purple">One owner</span> coordinating across Cursor</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 4 -->
+      <!-- Slide 4: What's Included (table title as pill) -->
       <div class="slide" data-slide="4">
         <div class="kicker">Principle 1</div>
-        <div class="slide-number">4/13</div>
+        <div class="slide-number">4/11</div>
 
         <h1 class="headline"><span class="emoji">⚡</span> What's Included</h1>
+
+        <div class="table-header-row">
+          <div class="pill-title green"><span class="emoji">⚡</span> Speed — Inclusions</div>
+        </div>
 
         <div class="table-container">
           <table class="inclusion-table">
@@ -830,66 +729,57 @@
         </div>
       </div>
 
-      <!-- Slide 5 -->
-      <div class="slide tight-canvas" data-slide="5">
+      <!-- Slide 5: Partnership (outlined cards, tighter headline) -->
+      <div class="slide" data-slide="5">
         <div class="kicker">Principle 2</div>
-        <div class="slide-number">5/13</div>
+        <div class="slide-number">5/11</div>
 
         <h1 class="headline tight"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
-
         <p class="slide-summary tight">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
 
-        <div class="icon-cards compact">
-          <div class="icon-card">
-            <div class="icon-card-icon">🔍</div>
-            <div class="icon-card-text">
-              <span class="pill-inline sm orange">Risk signals</span> + <span class="pill-inline sm green">friction</span>, not just tickets
-            </div>
+        <div class="card-grid three">
+          <div class="o-card accent-orange center">
+            <div class="o-icon">🔍</div>
+            <div class="o-text"><span class="pill-inline sm orange">Risk signals</span> + <span class="pill-inline sm green">friction</span>, not just tickets</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">💡</div>
-            <div class="icon-card-text">
-              Share <span class="pill-inline sm purple">patterns</span> and <span class="pill-inline sm purple">recommendations</span> early
-            </div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">💡</div>
+            <div class="o-text">Share <span class="pill-inline sm purple">patterns</span> and recommendations early</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">📚</div>
-            <div class="icon-card-text">
-              Create <span class="pill-inline sm orange">adoption moments</span>, not reactive fixes
-            </div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">📚</div>
+            <div class="o-text">Create <span class="pill-inline sm orange">adoption moments</span>, not reactive fixes</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">📣</div>
-            <div class="icon-card-text">
-              Route <span class="pill-inline sm green">feedback</span> to Product + Engineering with context
-            </div>
+          <div class="o-card accent-green center">
+            <div class="o-icon">📣</div>
+            <div class="o-text">Route <span class="pill-inline sm green">feedback</span> to Product + Engineering with context</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🧪</div>
-            <div class="icon-card-text">
-              Turn repeats into <span class="pill-inline sm purple">automation</span> + hardening
-            </div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">🧪</div>
+            <div class="o-text">Turn repeats into <span class="pill-inline sm purple">automation</span> + hardening</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🗺️</div>
-            <div class="icon-card-text">
-              Align on <span class="pill-inline sm orange">milestones</span> and progress visibility
-            </div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">🗺️</div>
+            <div class="o-text">Align on <span class="pill-inline sm orange">milestones</span> and progress visibility</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 6 -->
+      <!-- Slide 6: What's Included (table title as pill) -->
       <div class="slide" data-slide="6">
         <div class="kicker">Principle 2</div>
-        <div class="slide-number">6/13</div>
+        <div class="slide-number">6/11</div>
 
         <h1 class="headline"><span class="emoji">🤝</span> What's Included</h1>
+
+        <div class="table-header-row">
+          <div class="pill-title orange"><span class="emoji">🤝</span> Partnership — Inclusions</div>
+        </div>
 
         <div class="table-container">
           <table class="inclusion-table">
@@ -925,83 +815,86 @@
         </div>
       </div>
 
-      <!-- Slide 7 -->
+      <!-- Slide 7: Delivery (outlined two-card layout) -->
       <div class="slide" data-slide="7">
         <div class="kicker">Operating Model</div>
-        <div class="slide-number">7/13</div>
+        <div class="slide-number">7/11</div>
 
         <h1 class="headline">How It's Delivered</h1>
+        <p class="slide-summary tight">Meet customers where they are — with clear ownership across Cursor.</p>
 
         <div class="two-sections">
-          <div class="content-section">
-            <h3 class="section-title">Meet the Customer Where They Are</h3>
+          <div class="o-card accent-orange">
+            <div class="o-title"><span class="emoji">🧩</span> Meet the Customer Where They Are</div>
             <ul class="bullet-list">
               <li>Dedicated shared <span class="pill-inline sm orange">Slack channel</span></li>
-              <li><span class="pill-inline sm green">Slack Huddles/video calls</span> for live troubleshooting when appropriate</li>
+              <li><span class="pill-inline sm green">Huddles/video calls</span> for live troubleshooting when appropriate</li>
               <li>Async support when it best <span class="pill-inline sm purple">reduces friction</span></li>
             </ul>
           </div>
 
-          <div class="content-section">
-            <h3 class="section-title">Holistic Ownership Across the Company</h3>
+          <div class="o-card accent-green">
+            <div class="o-title"><span class="emoji">🏗️</span> Holistic Ownership Across the Company</div>
             <ul class="bullet-list">
               <li>Build + test <span class="pill-inline sm orange">AI solutions</span> to speed Premium resolution</li>
-              <li>Coordinate across <span class="pill-inline sm green">Support</span>, <span class="pill-inline sm green">Account</span>, <span class="pill-inline sm green">Product</span>, <span class="pill-inline sm green">Engineering</span></li>
+              <li>Tight coordination across <span class="pill-inline sm green">Support</span>, <span class="pill-inline sm green">Account</span>, <span class="pill-inline sm green">Product</span>, <span class="pill-inline sm green">Engineering</span></li>
               <li>Feedback is <span class="pill-inline sm purple">captured</span>, <span class="pill-inline sm purple">routed</span>, and <span class="pill-inline sm purple">reflected back</span></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Slide 8 -->
+      <!-- Slide 8: Staffing (outlined cards) -->
       <div class="slide" data-slide="8">
         <div class="kicker">Coverage</div>
-        <div class="slide-number">8/13</div>
+        <div class="slide-number">8/11</div>
 
         <h1 class="headline">Staffing Overview</h1>
+        <p class="slide-summary tight">Capacity-led delivery: AI assist + senior humans + follow-the-sun.</p>
 
-        <div class="icon-cards">
-          <div class="icon-card">
-            <div class="icon-card-icon">🤖</div>
-            <div class="icon-card-text"><span class="pill-inline sm green">AI layer</span> to enhance speed and proactivity</div>
+        <div class="card-grid three">
+          <div class="o-card accent-green center">
+            <div class="o-icon">🤖</div>
+            <div class="o-text"><span class="pill-inline sm green">AI layer</span> to enhance speed and proactivity</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">👥</div>
-            <div class="icon-card-text"><span class="pill-inline sm orange">Pooled senior team</span>, staffed to inbound volume</div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">👥</div>
+            <div class="o-text"><span class="pill-inline sm orange">Pooled senior team</span>, staffed to inbound volume</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🎯</div>
-            <div class="icon-card-text"><span class="pill-inline sm purple">Named Senior TSE</span> per account for continuity</div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">🎯</div>
+            <div class="o-text"><span class="pill-inline sm purple">Named Senior TSE</span> per account for continuity</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🌍</div>
-            <div class="icon-card-text"><span class="pill-inline sm green">Follow-the-sun</span> for customer-defined P0</div>
+          <div class="o-card accent-green center">
+            <div class="o-icon">🌍</div>
+            <div class="o-text"><span class="pill-inline sm green">Follow-the-sun</span> for customer-defined P0</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🧠</div>
-            <div class="icon-card-text"><span class="pill-inline sm orange">Escalation network</span> into Engineering when truly blocked</div>
+          <div class="o-card accent-orange center">
+            <div class="o-icon">🧠</div>
+            <div class="o-text"><span class="pill-inline sm orange">Escalation network</span> into Engineering when truly blocked</div>
           </div>
 
-          <div class="icon-card">
-            <div class="icon-card-icon">🧾</div>
-            <div class="icon-card-text">Clear <span class="pill-inline sm purple">roles</span> & playbooks so customers know what happens next</div>
+          <div class="o-card accent-purple center">
+            <div class="o-icon">🧾</div>
+            <div class="o-text">Clear <span class="pill-inline sm purple">roles</span> + playbooks so customers know what happens next</div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 9 -->
+      <!-- Slide 9: Premium Bar (drink left, copy right) -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
-        <div class="slide-number">9/13</div>
+        <div class="slide-number">9/11</div>
 
         <h1 class="headline">The Premium Bar</h1>
+        <p class="slide-summary tight">What it takes to deliver Premium Support consistently (and credibly).</p>
 
         <div class="premium-bar-layout">
-          <div class="cocktail-section">
+          <div class="cocktail-left">
             <div class="cocktail-glass">
               <div class="glass-top"></div>
               <div class="glass-body">
@@ -1017,35 +910,47 @@
               <div class="bubble b2"></div>
               <div class="bubble b3"></div>
             </div>
-
-            <div class="cocktail-name">The Premium Support Punch</div>
-            <p class="cocktail-recipe">"Hospitality mindset, mixed with technical expertise and a garnish of impressive communication skills, served in a tall glass of relentless improvement."</p>
           </div>
 
-          <div class="traits-section">
-            <div class="trait-item">
-              <span class="trait-icon">🧠</span>
-              <span class="trait-text"><span class="pill-inline sm green">Technical judgment</span> — knowing when to apply it</span>
+          <div class="bar-right">
+            <div>
+              <div class="bar-title">The Premium Support Punch</div>
+              <div class="bar-recipe">
+                Hospitality mindset, mixed with technical judgment and a garnish of sharp communication —
+                served with relentless improvement.
+              </div>
             </div>
-            <div class="trait-item">
-              <span class="trait-icon">🏢</span>
-              <span class="trait-text"><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</span>
-            </div>
-            <div class="trait-item">
-              <span class="trait-icon">💜</span>
-              <span class="trait-text"><span class="pill-inline sm purple">Customer obsession</span> — relentless outcomes focus</span>
-            </div>
-            <div class="trait-item">
-              <span class="trait-icon">💬</span>
-              <span class="trait-text"><span class="pill-inline sm green">Communication</span> — engineers to executives</span>
-            </div>
-            <div class="trait-item">
-              <span class="trait-icon">🧘</span>
-              <span class="trait-text"><span class="pill-inline sm orange">Emotional intelligence</span> — composure + empathy</span>
-            </div>
-            <div class="trait-item">
-              <span class="trait-icon">🤝</span>
-              <span class="trait-text"><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</span>
+
+            <div class="traits-grid">
+              <div class="trait-item" style="border-color: var(--g28);">
+                <span class="trait-icon">🧠</span>
+                <span><span class="pill-inline sm green">Technical judgment</span> — knowing when to apply it</span>
+              </div>
+
+              <div class="trait-item" style="border-color: var(--o28);">
+                <span class="trait-icon">🏢</span>
+                <span><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</span>
+              </div>
+
+              <div class="trait-item" style="border-color: var(--p28);">
+                <span class="trait-icon">💜</span>
+                <span><span class="pill-inline sm purple">Customer obsession</span> — relentless outcomes focus</span>
+              </div>
+
+              <div class="trait-item" style="border-color: var(--g28);">
+                <span class="trait-icon">💬</span>
+                <span><span class="pill-inline sm green">Communication</span> — engineers to executives</span>
+              </div>
+
+              <div class="trait-item" style="border-color: var(--o28);">
+                <span class="trait-icon">🧘</span>
+                <span><span class="pill-inline sm orange">Emotional intelligence</span> — composure + empathy</span>
+              </div>
+
+              <div class="trait-item" style="border-color: var(--p28);">
+                <span class="trait-icon">🤝</span>
+                <span><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1054,7 +959,7 @@
       <!-- Slide 10: Pricing -->
       <div class="slide" data-slide="10">
         <div class="kicker">Commercial Model</div>
-        <div class="slide-number">10/13</div>
+        <div class="slide-number">10/11</div>
 
         <h1 class="headline">Pricing — How Premium Support Is Sold</h1>
 
@@ -1063,8 +968,8 @@
         </div>
 
         <div class="pricing-layout">
-          <div class="pricing-card">
-            <h3><span class="emoji">💸</span> How It’s Sold</h3>
+          <div class="o-card accent-green">
+            <div class="o-title"><span class="emoji">💸</span> How It’s Sold</div>
             <ul class="pricing-bullets">
               <li><span class="pill-inline sm green">Annual add-on</span></li>
               <li>Priced as a <span class="pill-inline sm purple">% of ARR</span></li>
@@ -1074,8 +979,8 @@
             </ul>
           </div>
 
-          <div class="pricing-card">
-            <h3><span class="emoji">🧠</span> Why This Works</h3>
+          <div class="o-card accent-purple">
+            <div class="o-title"><span class="emoji">🧠</span> Why This Works</div>
             <ul class="pricing-bullets">
               <li>% of ARR scales with <span class="pill-inline sm purple">complexity</span> + <span class="pill-inline sm purple">blast radius</span></li>
               <li>Predictable for customers, <span class="pill-inline sm green">forecastable</span> for Cursor</li>
@@ -1086,151 +991,33 @@
         </div>
       </div>
 
-      <!-- Slide 11: Internal Value (punchy + fewer pills) -->
+      <!-- Slide 11: Internal Value (outlined cards + fewer pills) -->
       <div class="slide" data-slide="11">
         <div class="kicker">Internal Value</div>
-        <div class="slide-number">11/13</div>
+        <div class="slide-number">11/11</div>
 
         <h1 class="headline">Premium Support — Internal Value</h1>
         <p class="slide-summary">What Cursor leadership gets back for investing in the program.</p>
 
-        <div class="value-grid">
-          <div class="value-card">
-            <h3><span class="emoji">1️⃣</span> Protects Revenue</h3>
-            <p>Ownership in high-impact moments increases renewal confidence and reduces churn risk.</p>
-            <div class="pill-row">
-              <span class="pill purple">Renewals</span>
-              <span class="pill orange">Churn Risk ↓</span>
-            </div>
+        <div class="card-grid two">
+          <div class="o-card accent-purple">
+            <div class="o-title"><span class="emoji">1️⃣</span> Protects Revenue</div>
+            <div class="o-text">Ownership in high-impact moments increases renewal confidence and reduces churn risk.</div>
           </div>
 
-          <div class="value-card">
-            <h3><span class="emoji">2️⃣</span> Fewer Exec Fire Drills</h3>
-            <p>Earlier containment + proactive comms means fewer late-cycle surprise escalations.</p>
-            <div class="pill-row">
-              <span class="pill purple">Escalations ↓</span>
-              <span class="pill">Less Noise</span>
-            </div>
+          <div class="o-card accent-orange">
+            <div class="o-title"><span class="emoji">2️⃣</span> Fewer Exec Fire Drills</div>
+            <div class="o-text">Earlier containment + proactive comms means fewer late-cycle surprise escalations.</div>
           </div>
 
-          <div class="value-card">
-            <h3><span class="emoji">3️⃣</span> Faster Enterprise Learning</h3>
-            <p>Regular touchpoints reveal real workflows, friction, and priorities — beyond tickets.</p>
-            <div class="pill-row">
-              <span class="pill orange">Workflows</span>
-              <span class="pill purple">Friction</span>
-            </div>
+          <div class="o-card accent-green">
+            <div class="o-title"><span class="emoji">3️⃣</span> Faster Enterprise Learning</div>
+            <div class="o-text">Regular touchpoints reveal real workflows, friction, and priorities — beyond tickets.</div>
           </div>
 
-          <div class="value-card">
-            <h3><span class="emoji">4️⃣</span> Better Product Signal</h3>
-            <p>Turns issues into patterns and context — better prioritization, less loudest-customer bias.</p>
-            <div class="pill-row">
-              <span class="pill purple">Priorities</span>
-              <span class="pill orange">Less Bias</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 12: Success Metrics -->
-      <div class="slide" data-slide="12">
-        <div class="kicker">Success Metrics</div>
-        <div class="slide-number">12/13</div>
-
-        <h1 class="headline">How We Measure Success</h1>
-        <p class="slide-summary">A small set of KPIs that map to the two principles: speed when disrupted, and proactive partnership.</p>
-
-        <div class="value-grid">
-          <div class="value-card">
-            <h3><span class="emoji">⏱️</span> Time to Triage (P0)</h3>
-            <p>How quickly we acknowledge, engage, and start meaningful troubleshooting.</p>
-            <div class="pill-row">
-              <span class="pill">↓</span>
-              <span class="pill orange">Customer Effort</span>
-              <span class="pill purple">Ownership</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">⚡</span> Time to Recovery (P0)</h3>
-            <p>End-to-end speed to restore customer productivity in “blocked work” moments.</p>
-            <div class="pill-row">
-              <span class="pill">↓</span>
-              <span class="pill orange">Live Work</span>
-              <span class="pill purple">Escalation</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">🔁</span> Repeat Incident Rate</h3>
-            <p>Fewer repeat failures through RCAs, prevention, and product hardening.</p>
-            <div class="pill-row">
-              <span class="pill purple">RCA</span>
-              <span class="pill">↓</span>
-              <span class="pill orange">Prevention</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">📣</span> Feedback Loop Velocity</h3>
-            <p>How quickly feedback becomes decisions, fixes, and visible outcomes.</p>
-            <div class="pill-row">
-              <span class="pill">↑</span>
-              <span class="pill orange">Signal</span>
-              <span class="pill purple">Outcomes</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 13: Rollout -->
-      <div class="slide" data-slide="13">
-        <div class="kicker">Rollout</div>
-        <div class="slide-number">13/13</div>
-
-        <h1 class="headline">Rollout Plan</h1>
-        <p class="slide-summary">Start small, validate the model, then scale—without breaking the bar.</p>
-
-        <div class="value-grid">
-          <div class="value-card">
-            <h3><span class="emoji">🧪</span> Pilot (Weeks 0–4)</h3>
-            <p>Select a small set of accounts, define severity + comms, launch channel + escalation playbook, capture baseline KPIs.</p>
-            <div class="pill-row">
-              <span class="pill">Baseline</span>
-              <span class="pill orange">Playbook</span>
-              <span class="pill purple">KPIs</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">🛠️</span> Refine (Weeks 4–8)</h3>
-            <p>Improve AI triage + fixes, harden “what’s included,” operationalize cadence, ship visible improvements.</p>
-            <div class="pill-row">
-              <span class="pill">Cadence</span>
-              <span class="pill orange">Automation</span>
-              <span class="pill purple">Outcomes</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">🚀</span> Scale (Weeks 8–12)</h3>
-            <p>Expand accounts based on capacity, follow-the-sun, publish KPI dashboard for exec visibility, re-certify the bar.</p>
-            <div class="pill-row">
-              <span class="pill">Capacity</span>
-              <span class="pill orange">Dashboard</span>
-              <span class="pill purple">Re-certify</span>
-            </div>
-          </div>
-
-          <div class="value-card">
-            <h3><span class="emoji">🔒</span> Control Mechanism</h3>
-            <p>Pause new enrollments if response targets or quality are at risk — protect delivery before scaling.</p>
-            <div class="pill-row">
-              <span class="pill orange">Quality</span>
-              <span class="pill purple">Targets</span>
-              <span class="pill">Trust</span>
-            </div>
+          <div class="o-card accent-purple">
+            <div class="o-title"><span class="emoji">4️⃣</span> Better Product Signal</div>
+            <div class="o-text">Turns issues into patterns and context — better prioritization, less loudest-customer bias.</div>
           </div>
         </div>
       </div>
@@ -1240,49 +1027,40 @@
 
   <script>
     let currentSlide = 1;
-    const totalSlides = 13;
+    const totalSlides = 11;
 
     function showSlide(n) {
       const slides = document.querySelectorAll('.slide');
       slides.forEach(slide => slide.classList.remove('active'));
 
       if (n > totalSlides) currentSlide = 1;
-      if (n < 1) currentSlide = totalSlides;
+      else if (n < 1) currentSlide = totalSlides;
+      else currentSlide = n;
 
       document.querySelector(`[data-slide="${currentSlide}"]`)?.classList.add('active');
 
-      // Update chapter nav
       const navLinks = document.querySelectorAll('.chapter-nav a');
       navLinks.forEach(link => link.classList.remove('active'));
       const activeLink = document.querySelector(`.chapter-nav a[data-goto="${currentSlide}"]`);
       if (activeLink) activeLink.classList.add('active');
     }
 
-    // Chapter nav click handlers
     document.querySelectorAll('.chapter-nav a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const slideNum = parseInt(link.dataset.goto);
-        if (slideNum <= totalSlides) {
-          currentSlide = slideNum;
-          showSlide(currentSlide);
-        }
+        const slideNum = parseInt(link.dataset.goto, 10);
+        if (!Number.isNaN(slideNum)) showSlide(slideNum);
       });
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') {
-        currentSlide++;
-        showSlide(currentSlide);
+        showSlide(currentSlide + 1);
       } else if (e.key === 'ArrowLeft') {
-        currentSlide--;
-        showSlide(currentSlide);
+        showSlide(currentSlide - 1);
       } else if (e.key === 'f' || e.key === 'F') {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen();
-        } else {
-          document.exitFullscreen();
-        }
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
       }
     });
   </script>
