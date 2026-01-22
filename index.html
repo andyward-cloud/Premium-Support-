@@ -26,15 +26,12 @@
 
       /* Filled pill tints */
       --g10: rgba(20,184,166,0.12);
-      --g18: rgba(20,184,166,0.18);
       --g28: rgba(20,184,166,0.28);
 
       --o10: rgba(249,115,22,0.12);
-      --o18: rgba(249,115,22,0.18);
       --o28: rgba(249,115,22,0.28);
 
       --p10: rgba(139,92,246,0.12);
-      --p18: rgba(139,92,246,0.18);
       --p28: rgba(139,92,246,0.28);
     }
 
@@ -181,7 +178,7 @@
 
     .slide-summary.tight { margin-bottom: 0.9rem; }
 
-    /* FILLED inline highlight pills (restored) */
+    /* FILLED inline highlight pills */
     .pill-inline{
       display: inline-flex;
       align-items: center;
@@ -202,7 +199,7 @@
     .pill-inline.orange{ background: var(--o10); border-color: var(--o28); }
     .pill-inline.purple{ background: var(--p10); border-color: var(--p28); }
 
-    /* Vision quote */
+    /* Vision */
     .anchor-statement {
       font-size: 1.32rem;
       font-style: italic;
@@ -213,7 +210,7 @@
       font-weight: 300;
     }
 
-    /* OUTLINED CARDS (kept) */
+    /* OUTLINED CARDS */
     .card-grid {
       width: 100%;
       max-width: 1040px;
@@ -222,6 +219,9 @@
     }
     .card-grid.two { grid-template-columns: 1fr 1fr; }
     .card-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+    /* Slide 5 original 4-cards layout */
+    .card-grid.four { grid-template-columns: 1fr 1fr; }
 
     .o-card{
       background: transparent;
@@ -378,21 +378,27 @@
     }
     .pricing-bullets li{ margin-bottom: 0.42rem; }
 
-    /* Premium Bar layout: drink left, name/desc right, boxes below */
+    /* Premium Bar layout: drink left, name/desc right; traits below */
     .bar-top{
       width: 100%;
       max-width: 1040px;
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 2.1rem;
+      grid-template-columns: 0.80fr 1.20fr; /* tighter & more right-side room */
+      gap: 2.0rem;
       align-items: center;
-      margin-top: 0.15rem;
+      margin-top: 0.2rem;
     }
 
     .cocktail-left{
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    /* Make drink smaller */
+    .cocktail-wrap{
+      transform: scale(0.85);
+      transform-origin: center;
     }
 
     .bar-right{
@@ -416,13 +422,13 @@
       font-weight: 300;
       color: var(--muted);
       line-height: 1.55;
-      max-width: 560px;
+      max-width: 620px;
     }
 
     .bar-traits{
       width: 100%;
       max-width: 1040px;
-      margin-top: 1.15rem;
+      margin-top: 1.05rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0.85rem;
@@ -436,7 +442,7 @@
       display: flex;
       gap: 0.65rem;
       align-items: flex-start;
-      min-height: 76px;
+      min-height: 78px;
     }
     .trait-box .ticon{ font-size: 1.15rem; margin-top: 0.08rem; line-height: 1; }
     .trait-box .ttext{
@@ -548,8 +554,9 @@
     @media (max-width: 1100px) {
       .two-sections { grid-template-columns: 1fr; }
       .card-grid.three { grid-template-columns: 1fr 1fr; }
+      .card-grid.four { grid-template-columns: 1fr; }
       .pricing-layout { grid-template-columns: 1fr; }
-      .bar-top { grid-template-columns: 1fr; gap: 1.2rem; }
+      .bar-top { grid-template-columns: 1fr; gap: 1.1rem; }
       .bar-traits { grid-template-columns: 1fr; }
       .slide { padding: 2.4rem 3.1rem; }
       .chapter-nav { position: static; }
@@ -586,7 +593,7 @@
         <h1 class="headline">The Vision</h1>
 
         <p class="anchor-statement">
-          "Premium Support exists to provide
+          Premium Support exists to provide
           <span class="pill-inline purple">clear ownership</span>
           and
           <span class="pill-inline green">proactive partnership</span>
@@ -594,9 +601,10 @@
           enabling
           <span class="pill-inline orange">faster recovery</span>
           when work is disrupted,
-          <span class="pill-inline green">deeper value</span>
-          from Cursor, and confidence that their
-          <span class="pill-inline purple">feedback drives improvement</span>."
+          confidence that their
+          <span class="pill-inline purple">feedback drives improvement</span>,
+          and deeper long-term
+          <span class="pill-inline green">trust in Cursor</span>.
         </p>
       </div>
 
@@ -662,7 +670,7 @@
         </div>
       </div>
 
-      <!-- Slide 4 (Removed “Speed — Inclusions” header; keep table. Make Area/Included pills.) -->
+      <!-- Slide 4 -->
       <div class="slide" data-slide="4">
         <div class="kicker">Principle 1</div>
         <div class="slide-number">4/11</div>
@@ -715,7 +723,7 @@
         </div>
       </div>
 
-      <!-- Slide 5 -->
+      <!-- Slide 5 (ORIGINAL 4 CARDS) -->
       <div class="slide" data-slide="5">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">5/11</div>
@@ -723,40 +731,38 @@
         <h1 class="headline tight"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
         <p class="slide-summary tight">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
 
-        <div class="card-grid three">
+        <div class="card-grid four">
           <div class="o-card accent-orange center">
             <div class="o-icon">🔍</div>
-            <div class="o-text"><span class="pill-inline sm orange">Risk signals</span> + <span class="pill-inline sm green">friction</span>, not just tickets</div>
+            <div class="o-text">
+              Look for <span class="pill-inline sm orange">risk signals</span> and <span class="pill-inline sm green">friction</span>, not just incoming tickets
+            </div>
           </div>
 
           <div class="o-card accent-purple center">
             <div class="o-icon">💡</div>
-            <div class="o-text">Share <span class="pill-inline sm purple">patterns</span> and recommendations early</div>
+            <div class="o-text">
+              Proactively share <span class="pill-inline sm purple">insights, patterns, and recommendations</span>
+            </div>
           </div>
 
           <div class="o-card accent-orange center">
             <div class="o-icon">📚</div>
-            <div class="o-text">Create <span class="pill-inline sm orange">adoption moments</span>, not reactive fixes</div>
+            <div class="o-text">
+              Seek opportunity to <span class="pill-inline sm orange">deepen customer understanding</span> of the product
+            </div>
           </div>
 
           <div class="o-card accent-green center">
             <div class="o-icon">📣</div>
-            <div class="o-text">Route <span class="pill-inline sm green">feedback</span> to Product + Engineering with context</div>
-          </div>
-
-          <div class="o-card accent-purple center">
-            <div class="o-icon">🧪</div>
-            <div class="o-text">Turn repeats into <span class="pill-inline sm purple">automation</span> + hardening</div>
-          </div>
-
-          <div class="o-card accent-orange center">
-            <div class="o-icon">🗺️</div>
-            <div class="o-text">Align on <span class="pill-inline sm orange">milestones</span> and progress visibility</div>
+            <div class="o-text">
+              Clear path for <span class="pill-inline sm green">customer feedback</span> to reach Product, Engineering, Leadership
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 6 (Removed “Partnership — Inclusions” header; keep table. Make Area/Included pills.) -->
+      <!-- Slide 6 -->
       <div class="slide" data-slide="6">
         <div class="kicker">Principle 2</div>
         <div class="slide-number">6/11</div>
@@ -867,30 +873,31 @@
         </div>
       </div>
 
-      <!-- Slide 9 (requested layout) -->
+      <!-- Slide 9 -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
         <div class="slide-number">9/11</div>
 
         <h1 class="headline">The Premium Bar</h1>
-        <p class="slide-summary tight">What it takes to deliver Premium Support consistently (and credibly).</p>
 
         <div class="bar-top">
           <div class="cocktail-left">
-            <div class="cocktail-glass">
-              <div class="glass-top"></div>
-              <div class="glass-body">
-                <div class="liquid-container">
-                  <div class="liquid-layer layer-green"></div>
-                  <div class="liquid-layer layer-orange"></div>
-                  <div class="liquid-layer layer-purple"></div>
+            <div class="cocktail-wrap">
+              <div class="cocktail-glass">
+                <div class="glass-top"></div>
+                <div class="glass-body">
+                  <div class="liquid-container">
+                    <div class="liquid-layer layer-green"></div>
+                    <div class="liquid-layer layer-orange"></div>
+                    <div class="liquid-layer layer-purple"></div>
+                  </div>
                 </div>
+                <div class="glass-base"></div>
+                <div class="straw"></div>
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
               </div>
-              <div class="glass-base"></div>
-              <div class="straw"></div>
-              <div class="bubble b1"></div>
-              <div class="bubble b2"></div>
-              <div class="bubble b3"></div>
             </div>
           </div>
 
@@ -936,7 +943,7 @@
         </div>
       </div>
 
-      <!-- Slide 10 (updated pricing content) -->
+      <!-- Slide 10 -->
       <div class="slide" data-slide="10">
         <div class="kicker">Commercial Model</div>
         <div class="slide-number">10/11</div>
