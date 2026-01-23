@@ -158,6 +158,10 @@
       line-height: 1.08;
     }
 
+    .headline.compact {
+      font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+    }
+
     .headline.tight {
       font-size: clamp(1.68rem, 2.45vw, 2.06rem);
       line-height: 1.10;
@@ -270,6 +274,18 @@
       line-height: 1.45;
     }
 
+    .card-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .card-pills .pill-inline {
+      font-size: 0.78rem;
+      padding: 0.12rem 0.45rem;
+    }
+
     .o-title{
       font-family: 'Cursor Gothic', 'Fira Code', monospace;
       font-size: 1.02rem;
@@ -280,6 +296,75 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    /* Customer Value Grid */
+    .value-grid {
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .value-card {
+      background: transparent;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 0.75rem 0.9rem;
+      text-align: left;
+    }
+    .value-card.accent-green { border-color: var(--g28); }
+    .value-card.accent-orange { border-color: var(--o28); }
+    .value-card.accent-purple { border-color: var(--p28); }
+    .value-card.full-width { grid-column: 1 / -1; }
+
+    .value-header {
+      font-family: 'Cursor Gothic', 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .value-experience {
+      margin-bottom: 0.4rem;
+    }
+
+    .value-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+    }
+
+    .value-experience ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .value-experience ul li { margin-bottom: 0.15rem; }
+
+    .value-outcome {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 0.4rem;
+      margin-top: 0.3rem;
+    }
+    .value-outcome strong {
+      font-weight: 600;
+      font-style: normal;
     }
 
     /* Slide 7: remove other pills, but keep two headers as pills */
@@ -584,7 +669,8 @@
         <li><a href="#" data-goto="8"><span class="chapter-icon">👥</span>Staffing</a></li>
         <li><a href="#" data-goto="9"><span class="chapter-icon">🍸</span>The Premium Bar</a></li>
         <li><a href="#" data-goto="10"><span class="chapter-icon">💸</span>Pricing</a></li>
-        <li><a href="#" data-goto="11"><span class="chapter-icon">📈</span>Value</a></li>
+        <li><a href="#" data-goto="11"><span class="chapter-icon">💎</span>Customer Value</a></li>
+        <li><a href="#" data-goto="12"><span class="chapter-icon">📈</span>Internal Value</a></li>
       </ul>
     </nav>
 
@@ -592,7 +678,7 @@
       <!-- Slide 1 -->
       <div class="slide active" data-slide="1">
         <div class="kicker">Premium Support</div>
-        <div class="slide-number">1/11</div>
+        <div class="slide-number">1/12</div>
 
         <h1 class="headline">The Vision</h1>
 
@@ -615,15 +701,14 @@
       <!-- Slide 2 -->
       <div class="slide" data-slide="2">
         <div class="kicker">Premium Support</div>
-        <div class="slide-number">2/11</div>
+        <div class="slide-number">2/12</div>
 
         <h1 class="headline">The Principles</h1>
-        <p class="slide-summary">Two promises: speed in disruption, and proactive partnership.</p>
 
         <div class="card-grid two">
           <div class="o-card accent-green">
-            <div class="pill-title green"><span class="emoji">⚡</span> Speed When Work Is Disrupted</div>
-            <div class="o-text">Fast recovery, customer-defined urgency, reduced friction — with clear learning after incidents.</div>
+            <div class="pill-title green"><span class="emoji">⚡</span> Rapid Recovery When Work Is Disrupted</div>
+            <div class="o-text">Customer-defined urgency, reduced friction, and clear post-issue learning.</div>
           </div>
 
           <div class="o-card accent-orange">
@@ -636,10 +721,10 @@
       <!-- Slide 3 -->
       <div class="slide" data-slide="3">
         <div class="kicker">Principle 1</div>
-        <div class="slide-number">3/11</div>
+        <div class="slide-number">3/12</div>
 
-        <h1 class="headline"><span class="emoji">⚡</span> Speed When Work Is Disrupted</h1>
-        <p class="slide-summary tight">Fast recovery, customer-defined urgency, reduced friction — with clear post-incident learning.</p>
+        <h1 class="headline"><span class="emoji">⚡</span> Rapid Recovery When Work Is Disrupted</h1>
+        <p class="slide-summary">Customer-defined urgency, reduced friction, and clear post-issue learning.</p>
 
         <div class="card-grid three">
           <div class="o-card accent-green center">
@@ -677,9 +762,9 @@
       <!-- Slide 4 -->
       <div class="slide" data-slide="4">
         <div class="kicker">Principle 1</div>
-        <div class="slide-number">4/11</div>
+        <div class="slide-number">4/12</div>
 
-        <h1 class="headline"><span class="emoji">⚡</span> What's Included</h1>
+        <h1 class="headline">Offering: Rapid Recovery</h1>
 
         <div class="table-container">
           <table class="inclusion-table">
@@ -706,10 +791,9 @@
       <!-- Slide 5 (Original 4 cards) -->
       <div class="slide" data-slide="5">
         <div class="kicker">Principle 2</div>
-        <div class="slide-number">5/11</div>
+        <div class="slide-number">5/12</div>
 
-        <h1 class="headline tight"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
-        <p class="slide-summary tight">Risk detection, unlock potential, actionable insights, and a credible feedback loop.</p>
+        <h1 class="headline compact"><span class="emoji">🤝</span> Proactive Partnership, Not Reactive Support</h1>
 
         <div class="card-grid four">
           <div class="o-card accent-orange center">
@@ -745,9 +829,9 @@
       <!-- Slide 6 -->
       <div class="slide" data-slide="6">
         <div class="kicker">Principle 2</div>
-        <div class="slide-number">6/11</div>
+        <div class="slide-number">6/12</div>
 
-        <h1 class="headline"><span class="emoji">🤝</span> What's Included</h1>
+        <h1 class="headline">Offering: Proactive Partnership</h1>
 
         <div class="table-container">
           <table class="inclusion-table">
@@ -771,10 +855,10 @@
       <!-- Slide 7 (headers as pills, remove other pills) -->
       <div class="slide no-inline-pills" data-slide="7">
         <div class="kicker">Operating Model</div>
-        <div class="slide-number">7/11</div>
+        <div class="slide-number">7/12</div>
 
-        <h1 class="headline">How It's Delivered</h1>
-        <p class="slide-summary tight">Meet customers where they are — with clear ownership across Cursor.</p>
+        <h1 class="headline">Delivery Principles</h1>
+        <p class="slide-summary">Meet customers where they are — with clear ownership across Cursor.</p>
 
         <div class="two-sections">
           <div class="o-card accent-orange">
@@ -800,10 +884,10 @@
       <!-- Slide 8 -->
       <div class="slide" data-slide="8">
         <div class="kicker">Coverage</div>
-        <div class="slide-number">8/11</div>
+        <div class="slide-number">8/12</div>
 
-        <h1 class="headline">Staffing Overview</h1>
-        <p class="slide-summary tight">Capacity-led delivery: AI assist + senior humans + follow-the-sun.</p>
+        <h1 class="headline">Staffing: Operational Vision</h1>
+        <p class="slide-summary">Capacity-led delivery: AI assist + senior humans + follow-the-sun.</p>
 
         <div class="card-grid three">
           <div class="o-card accent-green center">
@@ -838,10 +922,10 @@
         </div>
       </div>
 
-      <!-- Slide 9 (drink closer + smaller; original recipe wording restored) -->
+      <!-- Slide 9 (drink closer + smaller; updated trait descriptions) -->
       <div class="slide" data-slide="9">
         <div class="kicker">Talent Bar</div>
-        <div class="slide-number">9/11</div>
+        <div class="slide-number">9/12</div>
 
         <h1 class="headline">The Premium Bar</h1>
 
@@ -878,32 +962,32 @@
         <div class="bar-traits">
           <div class="trait-box" style="border-color: var(--g28);">
             <div class="ticon">🧠</div>
-            <div class="ttext"><span class="pill-inline sm green">Technical judgment</span> — knowing when to apply it</div>
+            <div class="ttext"><span class="pill-inline sm green">Technical judgment</span> — Applies expertise thoughtfully and knows when to escalate or pull others in</div>
           </div>
 
           <div class="trait-box" style="border-color: var(--o28);">
             <div class="ticon">🏢</div>
-            <div class="ttext"><span class="pill-inline sm orange">Enterprise mindset</span> — comfortable with ambiguity</div>
+            <div class="ttext"><span class="pill-inline sm orange">Enterprise mindset</span> — Comfortable operating in ambiguity, scale, and high-impact environments</div>
           </div>
 
           <div class="trait-box" style="border-color: var(--p28);">
             <div class="ticon">💜</div>
-            <div class="ttext"><span class="pill-inline sm purple">Customer obsession</span> — relentless outcomes focus</div>
+            <div class="ttext"><span class="pill-inline sm purple">Michelin Star focus</span> — Brings a calm, proactive, white-glove approach — attentive, empathetic, and spots opportunities to go the extra mile</div>
           </div>
 
           <div class="trait-box" style="border-color: var(--g28);">
             <div class="ticon">💬</div>
-            <div class="ttext"><span class="pill-inline sm green">Communication</span> — engineers to executives</div>
+            <div class="ttext"><span class="pill-inline sm green">Clear, confident communication</span> — Builds trust across engineers, stakeholders, and executives</div>
           </div>
 
           <div class="trait-box" style="border-color: var(--o28);">
             <div class="ticon">🧘</div>
-            <div class="ttext"><span class="pill-inline sm orange">Emotional intelligence</span> — composure + empathy</div>
+            <div class="ttext"><span class="pill-inline sm orange">Emotional intelligence</span> — Leads with composure, empathy, and sound judgment under pressure</div>
           </div>
 
           <div class="trait-box" style="border-color: var(--p28);">
             <div class="ticon">🤝</div>
-            <div class="ttext"><span class="pill-inline sm purple">Accountability</span> — owns it, fixes it</div>
+            <div class="ttext"><span class="pill-inline sm purple">End-to-end accountability</span> — Owns issues fully — from first signal through resolution and follow-through</div>
           </div>
         </div>
       </div>
@@ -911,21 +995,21 @@
       <!-- Slide 10 (titles as pills; remove other pills) -->
       <div class="slide no-inline-pills" data-slide="10">
         <div class="kicker">Commercial Model</div>
-        <div class="slide-number">10/11</div>
+        <div class="slide-number">10/12</div>
 
-        <h1 class="headline">Pricing — How Premium Support Is Sold</h1>
+        <h1 class="headline">Pricing & Value</h1>
 
         <div class="pricing-callout">
-          “We price Premium Support in a way that scales with the customer — and we staff it in a way that protects quality and delivery.”
+          "We price Premium Support in a way that scales with the customer — and we staff it in a way that protects quality and delivery."
         </div>
 
         <div class="pricing-layout">
           <div class="o-card accent-green">
-            <div class="pill-title green"><span class="emoji">💸</span> How It’s Sold</div>
+            <div class="pill-title green"><span class="emoji">💸</span> How It's Sold</div>
             <ul class="pricing-bullets">
-              <li>Annual add-on to contract</li>
               <li>Priced as a % of ARR</li>
-              <li>Minimum $ value to ensure value for CX</li>
+              <li>Annual add-on to contract</li>
+              <li>Minimum $ value to ensure we target the right customer</li>
               <li>Staffed to inbound volume, not customer count</li>
             </ul>
           </div>
@@ -936,15 +1020,51 @@
               <li>Predictable for customers, forecastable for Cursor</li>
               <li>% of revenue protects value perception & avoids oversell</li>
               <li>Staffing to volume maximizes capacity</li>
+              <li>Builds a cross-functional partnership internally to ensure offering remains healthy for the customer and the business.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Slide 11 -->
+      <!-- Slide 11 - Customer Value -->
       <div class="slide" data-slide="11">
+        <div class="kicker">Customer Value</div>
+        <div class="slide-number">11/12</div>
+
+        <h1 class="headline">Premium Support — Customer Value</h1>
+        <p class="slide-summary">What value can Premium Support provide to customers?</p>
+
+        <div class="card-grid two">
+          <div class="o-card accent-green">
+            <div class="o-title">More Time Spent Doing Real Work</div>
+            <div class="o-text">Teams spend more time building, shipping, and reviewing — and less time stalled by uncertainty when issues arise.</div>
+            <div class="card-pills"><span class="pill-inline green">Productive Time</span> <span class="pill-inline green">Unblocked Work</span></div>
+          </div>
+
+          <div class="o-card accent-orange">
+            <div class="o-title">Clear Direction Arrives Faster</div>
+            <div class="o-text">Customers gain clarity sooner — whether that's a fix, a workaround, or a plan — allowing teams to move forward with confidence.</div>
+            <div class="card-pills"><span class="pill-inline orange">Decision Confidence</span> <span class="pill-inline orange">Clear Direction</span></div>
+          </div>
+
+          <div class="o-card accent-purple">
+            <div class="o-title">Support Adapts to How Customers Work</div>
+            <div class="o-text">Customers engage through the channels and cadence that work best for them, with urgency defined by their business impact.</div>
+            <div class="card-pills"><span class="pill-inline purple">Customer Control</span> <span class="pill-inline purple">Flexible Engagement</span></div>
+          </div>
+
+          <div class="o-card accent-green">
+            <div class="o-title">Knowledge, Confidence, and Trust</div>
+            <div class="o-text">Customers experience fewer repeat issues and gain a deeper understanding of how Cursor fits into their workflows. Proactive monitoring provides peace of mind, while faster feedback loops strengthen their connection to the product.</div>
+            <div class="card-pills"><span class="pill-inline green">Compounding Trust</span> <span class="pill-inline green">Product Confidence</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12 -->
+      <div class="slide" data-slide="12">
         <div class="kicker">Internal Value</div>
-        <div class="slide-number">11/11</div>
+        <div class="slide-number">12/12</div>
 
         <h1 class="headline">Premium Support — Internal Value</h1>
         <p class="slide-summary">What Cursor leadership gets back for investing in the program.</p>
@@ -976,7 +1096,7 @@
 
   <script>
     let currentSlide = 1;
-    const totalSlides = 11;
+    const totalSlides = 12;
 
     function showSlide(n) {
       const slides = document.querySelectorAll('.slide');
