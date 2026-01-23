@@ -292,76 +292,7 @@
       gap: 0.5rem;
     }
 
-    /* Customer Value Grid */
-    .value-grid {
-      width: 100%;
-      max-width: 1040px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-
-    .value-card {
-      background: transparent;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      padding: 0.75rem 0.9rem;
-      text-align: left;
-    }
-    .value-card.accent-green { border-color: var(--g28); }
-    .value-card.accent-orange { border-color: var(--o28); }
-    .value-card.accent-purple { border-color: var(--p28); }
-    .value-card.full-width { grid-column: 1 / -1; }
-
-    .value-header {
-      font-family: 'Cursor Gothic', 'Fira Code', monospace;
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.45rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .value-experience {
-      margin-bottom: 0.4rem;
-    }
-
-    .value-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.25rem;
-    }
-
-    .value-experience ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-    .value-experience ul li { margin-bottom: 0.15rem; }
-
-    .value-outcome {
-      font-size: 0.82rem;
-      font-weight: 400;
-      color: var(--ink);
-      font-style: italic;
-      border-top: 1px solid var(--border);
-      padding-top: 0.4rem;
-      margin-top: 0.3rem;
-    }
-    .value-outcome strong {
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    /* Slide 7: remove other pills, but keep two headers as pills */
+    /* Slide 8 and 11: remove other pills, but keep title pills */
     .no-inline-pills .pill-inline { display: none !important; }
 
     /* Two-section */
@@ -659,11 +590,11 @@
         <li><a href="#" data-goto="4"><span class="chapter-icon">⚡</span>What's Included</a></li>
         <li><a href="#" data-goto="5"><span class="chapter-icon">🤝</span>Partnership</a></li>
         <li><a href="#" data-goto="6"><span class="chapter-icon">🤝</span>What's Included</a></li>
-        <li><a href="#" data-goto="7"><span class="chapter-icon">🧩</span>Delivery</a></li>
-        <li><a href="#" data-goto="8"><span class="chapter-icon">👥</span>Staffing</a></li>
-        <li><a href="#" data-goto="9"><span class="chapter-icon">🍸</span>The Premium Bar</a></li>
-        <li><a href="#" data-goto="10"><span class="chapter-icon">💸</span>Pricing</a></li>
-        <li><a href="#" data-goto="11"><span class="chapter-icon">💎</span>Customer Value</a></li>
+        <li><a href="#" data-goto="7"><span class="chapter-icon">💎</span>Customer Value</a></li>
+        <li><a href="#" data-goto="8"><span class="chapter-icon">🧩</span>Delivery</a></li>
+        <li><a href="#" data-goto="9"><span class="chapter-icon">👥</span>Staffing</a></li>
+        <li><a href="#" data-goto="10"><span class="chapter-icon">🍸</span>The Premium Bar</a></li>
+        <li><a href="#" data-goto="11"><span class="chapter-icon">💸</span>Pricing</a></li>
       </ul>
     </nav>
 
@@ -849,10 +780,45 @@
         </div>
       </div>
 
-      <!-- Slide 7 (headers as pills, remove other pills) -->
-      <div class="slide no-inline-pills" data-slide="7">
-        <div class="kicker">Operating Model</div>
+      <!-- Slide 7 - Customer Value (moved from 11) -->
+      <div class="slide" data-slide="7">
+        <div class="kicker">Customer Value</div>
         <div class="slide-number">7/11</div>
+
+        <h1 class="headline">Premium Support - Customer Value</h1>
+        <p class="slide-summary">What value can Premium Support provide to customers?</p>
+
+        <div class="card-grid two">
+          <div class="o-card accent-green">
+            <div class="o-title">More Time Spent Doing Real Work</div>
+            <div class="o-text">Teams spend more time building, shipping, and reviewing - and less time stalled by uncertainty when issues arise.</div>
+            <div class="card-pills"><span class="pill-inline green">Productive Time</span> <span class="pill-inline green">Unblocked Work</span></div>
+          </div>
+
+          <div class="o-card accent-orange">
+            <div class="o-title">Clear Direction Arrives Faster</div>
+            <div class="o-text">Customers gain clarity sooner - whether that's a fix, a workaround, or a plan - allowing teams to move forward with confidence.</div>
+            <div class="card-pills"><span class="pill-inline orange">Decision Confidence</span> <span class="pill-inline orange">Clear Direction</span></div>
+          </div>
+
+          <div class="o-card accent-purple">
+            <div class="o-title">Support Adapts to How Customers Work</div>
+            <div class="o-text">Customers engage through the channels and cadence that work best for them, with urgency defined by their business impact.</div>
+            <div class="card-pills"><span class="pill-inline purple">Customer Control</span> <span class="pill-inline purple">Flexible Engagement</span></div>
+          </div>
+
+          <div class="o-card accent-green">
+            <div class="o-title">Knowledge, Confidence, and Trust</div>
+            <div class="o-text">Customers experience fewer repeat issues and gain a deeper understanding of how Cursor fits into their workflows. Proactive monitoring provides peace of mind, while faster feedback loops strengthen their connection to the product.</div>
+            <div class="card-pills"><span class="pill-inline green">Compounding Trust</span> <span class="pill-inline green">Product Confidence</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8 (headers as pills, remove other pills) -->
+      <div class="slide no-inline-pills" data-slide="8">
+        <div class="kicker">Operating Model</div>
+        <div class="slide-number">8/11</div>
 
         <h1 class="headline">Delivery Principles</h1>
         <p class="slide-summary">Meet customers where they are - with clear ownership across Cursor.</p>
@@ -878,10 +844,10 @@
         </div>
       </div>
 
-      <!-- Slide 8 -->
-      <div class="slide" data-slide="8">
+      <!-- Slide 9 -->
+      <div class="slide" data-slide="9">
         <div class="kicker">Coverage</div>
-        <div class="slide-number">8/11</div>
+        <div class="slide-number">9/11</div>
 
         <h1 class="headline">Staffing: Operational Vision</h1>
         <p class="slide-summary">Capacity-led delivery: AI assist + senior humans + follow-the-sun.</p>
@@ -919,10 +885,10 @@
         </div>
       </div>
 
-      <!-- Slide 9 (drink closer + smaller; updated trait descriptions) -->
-      <div class="slide" data-slide="9">
+      <!-- Slide 10 (Premium Bar) -->
+      <div class="slide" data-slide="10">
         <div class="kicker">Talent Bar</div>
-        <div class="slide-number">9/11</div>
+        <div class="slide-number">10/11</div>
 
         <h1 class="headline">The Premium Bar</h1>
         <p class="slide-summary" style="visibility: hidden;">&nbsp;</p>
@@ -990,10 +956,10 @@
         </div>
       </div>
 
-      <!-- Slide 10 (titles as pills; remove other pills) -->
-      <div class="slide no-inline-pills" data-slide="10">
+      <!-- Slide 11 (Pricing) -->
+      <div class="slide no-inline-pills" data-slide="11">
         <div class="kicker">Commercial Model</div>
-        <div class="slide-number">10/11</div>
+        <div class="slide-number">11/11</div>
 
         <h1 class="headline">Pricing & Value</h1>
         <p class="slide-summary" style="visibility: hidden;">&nbsp;</p>
@@ -1024,41 +990,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Slide 11 - Customer Value -->
-      <div class="slide" data-slide="11">
-        <div class="kicker">Customer Value</div>
-        <div class="slide-number">11/11</div>
-
-        <h1 class="headline">Premium Support - Customer Value</h1>
-        <p class="slide-summary">What value can Premium Support provide to customers?</p>
-
-        <div class="card-grid two">
-          <div class="o-card accent-green">
-            <div class="o-title">More Time Spent Doing Real Work</div>
-            <div class="o-text">Teams spend more time building, shipping, and reviewing - and less time stalled by uncertainty when issues arise.</div>
-            <div class="card-pills"><span class="pill-inline green">Productive Time</span> <span class="pill-inline green">Unblocked Work</span></div>
-          </div>
-
-          <div class="o-card accent-orange">
-            <div class="o-title">Clear Direction Arrives Faster</div>
-            <div class="o-text">Customers gain clarity sooner - whether that's a fix, a workaround, or a plan - allowing teams to move forward with confidence.</div>
-            <div class="card-pills"><span class="pill-inline orange">Decision Confidence</span> <span class="pill-inline orange">Clear Direction</span></div>
-          </div>
-
-          <div class="o-card accent-purple">
-            <div class="o-title">Support Adapts to How Customers Work</div>
-            <div class="o-text">Customers engage through the channels and cadence that work best for them, with urgency defined by their business impact.</div>
-            <div class="card-pills"><span class="pill-inline purple">Customer Control</span> <span class="pill-inline purple">Flexible Engagement</span></div>
-          </div>
-
-          <div class="o-card accent-green">
-            <div class="o-title">Knowledge, Confidence, and Trust</div>
-            <div class="o-text">Customers experience fewer repeat issues and gain a deeper understanding of how Cursor fits into their workflows. Proactive monitoring provides peace of mind, while faster feedback loops strengthen their connection to the product.</div>
-            <div class="card-pills"><span class="pill-inline green">Compounding Trust</span> <span class="pill-inline green">Product Confidence</span></div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1074,7 +1005,8 @@
       else if (n < 1) currentSlide = totalSlides;
       else currentSlide = n;
 
-      document.querySelector(`[data-slide="${currentSlide}"]`)?.classList.add('active');
+      const activeSlide = document.querySelector(`[data-slide="${currentSlide}"]`);
+      if (activeSlide) activeSlide.classList.add('active');
 
       const navLinks = document.querySelectorAll('.chapter-nav a');
       navLinks.forEach(link => link.classList.remove('active'));
